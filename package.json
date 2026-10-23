@@ -1,0 +1,14 @@
+{
+  "name": "linkedin-auto-poster",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generates a LinkedIn post from a topic using Gemini and publishes it via the LinkedIn API.",
+  "type": "commonjs",
+  "scripts": {
+    "post": "node scripts/run.js",
+    "auth": "node scripts/getLinkedInToken.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
