@@ -7,13 +7,19 @@ async function generatePost(topic, apiKey, headlines = []) {
 
   const prompt = `Write a LinkedIn post about this topic: "${topic}"${contextBlock}
 
-Rules:
-- Sound like a real person wrote it, not a corporate press release.
-- First person, conversational, no buzzwords like "synergy" or "leverage".
-- 80-150 words.
-- Plain text only, no markdown, no asterisks for bold.
-- Break it into short paragraphs (1-3 sentences each) for readability.
-- End with 2-3 relevant, lowercase hashtags, nothing more.
+Structure it like a high-performing LinkedIn post, not a plain paragraph dump:
+- Line 1: a short, punchy hook (under 12 words) that makes someone stop scrolling - a bold claim, a surprising detail, or a direct question. No generic openers like "In today's world" or "Let's talk about".
+- Blank line after the hook.
+- Body: 2-4 points, each its own short paragraph (1-2 sentences, short lines). Start each one with a simple marker like "→" so it scans as a list, not a wall of text.
+- Blank line between every paragraph - lots of white space, nothing longer than 2 sentences in a row.
+- Closing line: one short line that gives a clear takeaway or asks a genuine question to invite comments.
+- Blank line, then 2-3 relevant lowercase hashtags on their own line.
+
+Voice:
+- Sound like a real person who knows this space, not a corporate press release or a motivational poster.
+- First person where natural, conversational, no buzzwords like "synergy", "leverage", "unlock", "game-changer".
+- 80-150 words total, excluding hashtags.
+- Plain text only - no markdown asterisks or headers, since LinkedIn displays them as literal characters, not formatting.
 - Do not include any preamble like "Here's a post:" - output only the post text itself.`;
 
   const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
