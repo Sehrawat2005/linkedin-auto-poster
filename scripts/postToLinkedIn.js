@@ -1,4 +1,6 @@
-const LINKEDIN_VERSION = "202504";
+// LinkedIn requires a YYYYMM version header; each version is supported for >= 1 year.
+// Bump this periodically - see https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+const LINKEDIN_VERSION = "202610";
 
 async function getAuthorUrn(accessToken) {
   const res = await fetch("https://api.linkedin.com/v2/userinfo", {
