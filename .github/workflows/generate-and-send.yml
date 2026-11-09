@@ -2,7 +2,7 @@ name: Generate draft and send for review
 
 on:
   schedule:
-    - cron: "0 9 * * *" # 9:00 AM UTC daily — edit this to change the time
+    - cron: "30 5 * * *" # 5:30 AM UTC = 11:00 AM IST daily — edit this to change the time
   workflow_dispatch: {} # lets you trigger a run manually from the Actions tab
 
 permissions:
