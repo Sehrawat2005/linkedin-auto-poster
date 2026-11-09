@@ -2,9 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const { getUpdates, sendMessage, answerCallbackQuery, clearInlineKeyboard } = require("./telegram");
 const { publishPost } = require("./postToLinkedIn");
-const { generateAndSendDraft } = require("./generateAndSend");
+const { generateDiscoveryDraft, generateCustomDraft } = require("./generateAndSend");
 
-const TOPICS_PATH = path.join(__dirname, "..", "topics.json");
 const PENDING_PATH = path.join(__dirname, "..", "pending.json");
 
 function readIncoming(updates, chatId) {
@@ -86,34 +85,30 @@ async function main() {
       });
       console.log(`Published. Post id: ${id}`);
 
-      if (pending.topicIndex !== null && pending.topicIndex !== undefined) {
-        const topicsState = JSON.parse(fs.readFileSync(TOPICS_PATH, "utf8"));
-        topicsState.nextIndex = (pending.topicIndex + 1) % topicsState.topics.length;
-        fs.writeFileSync(TOPICS_PATH, JSON.stringify(topicsState, null, 2) + "\n");
-      }
-
       await sendMessage(botToken, chatId, "Published to LinkedIn.");
 
-      pending.status = "idle";
-      pending.topic = null;
-      pending.category = null;
-      pending.topicIndex = null;
-      pending.postText = null;
-      pending.imageUrl = null;
-      pending.draftMessageId = null;
+      Object.assign(pending, {
+        status: "idle",
+        topic: null,
+        category: null,
+        source: null,
+        sourceTitle: null,
+        sourceUrl: null,
+        sourceObjectId: null,
+        postText: null,
+        imageUrl: null,
+        draftMessageId: null,
+      });
       fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
     } else {
-      console.log("Rejected - generating a new draft for the same topic...");
+      console.log("Rejected - generating a new draft...");
       await sendMessage(botToken, chatId, "Got it, generating a new draft...");
-      await generateAndSendDraft({
-        topic: pending.topic,
-        category: pending.category,
-        topicIndex: pending.topicIndex,
-        groqKey,
-        botToken,
-        chatId,
-        pending,
-      });
+
+      if (pending.source === "custom") {
+        await generateCustomDraft({ topic: pending.topic, groqKey, botToken, chatId, pending });
+      } else {
+        await generateDiscoveryDraft({ groqKey, botToken, chatId, pending });
+      }
     }
     return;
   }
@@ -122,15 +117,7 @@ async function main() {
   if (customTopic) {
     console.log(`Custom topic requested: "${customTopic}"`);
     await sendMessage(botToken, chatId, "Got it, researching and drafting a post on that...");
-    await generateAndSendDraft({
-      topic: customTopic,
-      category: null,
-      topicIndex: null,
-      groqKey,
-      botToken,
-      chatId,
-      pending,
-    });
+    await generateCustomDraft({ topic: customTopic, groqKey, botToken, chatId, pending });
     return;
   }
 

@@ -3,7 +3,10 @@
   "telegramOffset": 249590243,
   "topic": null,
   "category": null,
-  "topicIndex": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
   "postText": null,
   "imageUrl": null,
   "draftMessageId": null
