@@ -1,8 +1,10 @@
 {
   "usedObjectIds": [
-    "50356579"
+    "50356579",
+    "50428199"
   ],
   "usedTopics": [
-    "Privacy-focused AI model outperforms big players in PII detection"
+    "Privacy-focused AI model outperforms big players in PII detection",
+    "Using AWS Nitro Sandboxes for container isolation across EKS, ECS, and EC2"
   ]
 }
