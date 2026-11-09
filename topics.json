@@ -1,12 +1,19 @@
 {
   "nextIndex": 0,
   "topics": [
-    "Why consistency matters more than motivation when building a skill",
-    "A lesson I learned from a project that didn't go as planned",
-    "The most underrated skill in tech right now",
-    "Why asking for help is a sign of strength, not weakness",
-    "What I wish I knew when I started my career",
-    "A simple habit that improved how I work",
-    "Why small wins deserve to be celebrated"
+    { "text": "3 security mistakes developers make when deploying a website to production, and how to avoid them", "category": "web security" },
+    { "text": "What changed in AWS recently that most small teams haven't noticed yet", "category": "AWS" },
+    { "text": "A practical checklist for securing an API before it goes live", "category": "API security" },
+    { "text": "Why \"it works on my machine\" keeps breaking production, and what actually fixes it", "category": "software development" },
+    { "text": "The cloud cost mistake almost every startup makes in year one", "category": "cloud computing" },
+    { "text": "What a new AWS or cloud service launch actually means for a small dev team, explained simply", "category": "AWS" },
+    { "text": "The one website performance fix that matters more than people think", "category": "web development" },
+    { "text": "A marketing mistake that quietly kills conversion rates on SaaS landing pages", "category": "digital marketing" },
+    { "text": "What's trending in web development right now and whether it's worth adopting", "category": "web development" },
+    { "text": "A cloud security step teams skip until it's too late", "category": "cloud security" },
+    { "text": "How serverless is quietly changing how small teams build and deploy software", "category": "serverless" },
+    { "text": "A marketing services trend worth paying attention to this year", "category": "digital marketing" },
+    { "text": "The first thing I check when a website feels slow or insecure", "category": "web development" },
+    { "text": "What's new in cloud computing that's actually useful, not just hype", "category": "cloud computing" }
   ]
 }

@@ -1,7 +1,11 @@
 const GROQ_MODEL = "llama-3.3-70b-versatile";
 
-async function generatePost(topic, apiKey) {
-  const prompt = `Write a LinkedIn post about this topic: "${topic}"
+async function generatePost(topic, apiKey, headlines = []) {
+  const contextBlock = headlines.length
+    ? `\n\nFor grounding, here are a few recent real headlines from this space (use them for inspiration or context if relevant, don't just restate them, and don't invent facts beyond what's reasonable):\n${headlines.map((h) => `- ${h}`).join("\n")}`
+    : "";
+
+  const prompt = `Write a LinkedIn post about this topic: "${topic}"${contextBlock}
 
 Rules:
 - Sound like a real person wrote it, not a corporate press release.

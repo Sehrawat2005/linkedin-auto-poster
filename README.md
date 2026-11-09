@@ -8,13 +8,31 @@ Fully free: no paid APIs, no paid hosting.
 
 ## How the approval flow works
 
-1. Once a day, a GitHub Actions workflow generates a draft (text + image) and sends it
-   to you on Telegram, with instructions to reply `APPROVE` or `REJECT`.
+1. Once a day, a GitHub Actions workflow generates a draft (text + image) from the next
+   topic in `topics.json` and sends it to you on Telegram, with instructions to reply
+   `APPROVE` or `REJECT`.
 2. A second workflow checks every 5 minutes for your reply:
    - `APPROVE` (or `ok`) → publishes the post + image to LinkedIn, advances to the next topic.
    - `REJECT` (or `no`) → discards the draft and sends you a new one for the same topic.
 3. State (what's pending review, how far the topic rotation is) lives in `pending.json`
    and `topics.json`, committed back to the repo by the workflows.
+
+### On-demand topics
+
+When nothing is awaiting review, just send the bot any plain message describing a
+topic (e.g. "a recent AWS security incident and what it teaches us") and it will draft
+a post on exactly that topic and send it for review the same way - no need to wait for
+the daily schedule or touch `topics.json`. This doesn't affect the topic rotation, so
+the queue picks up where it left off afterward.
+
+### How "trending" topics get grounded
+
+For topics tagged with a category (or any on-demand request), the system pulls a few
+real, recent headlines from Hacker News's free public search related to that topic and
+feeds them to the model as context, so posts about "what's new" or "what's trending"
+are grounded in something real instead of invented. This is lightweight grounding, not
+a deep research engine - it works well for "is anything notable happening in AWS/cloud/
+web dev right now," not for same-day breaking news or very niche topics.
 
 **Note on the public repo:** since this repo needs to be public to stay within GitHub's
 free Actions minutes at a 5-minute polling interval, `pending.json` (your draft post text,
@@ -97,9 +115,11 @@ In the repo on GitHub: **Settings → Secrets and variables → Actions → New 
 
 ## 7. Edit your topics
 
-Open `topics.json` and replace the placeholder topics with your own. The rotation only
-advances to the next topic once a draft on the current topic is **approved and published**
-— a rejected draft retries the same topic.
+Open `topics.json` and edit the list. Each entry is `{ "text": "...", "category": "..." }`
+— `text` is the exact topic given to the model, `category` is a short keyword (e.g. "AWS",
+"web security") used to search for grounding headlines. The rotation only advances to the
+next topic once a draft on the current topic is **approved and published** — a rejected
+draft retries the same topic.
 
 ## 8. Done
 
