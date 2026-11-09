@@ -59,7 +59,14 @@ async function main() {
   }
 
   if (callbackQueryId) {
-    await answerCallbackQuery(botToken, callbackQueryId, decision === "approve" ? "Approved" : "Rejected");
+    try {
+      await answerCallbackQuery(botToken, callbackQueryId, decision === "approve" ? "Approved" : "Rejected");
+    } catch (err) {
+      // Non-fatal - the button tap's loading spinner/toast just won't clear if this
+      // query is stale (e.g. the poller was slow to pick it up). The decision itself
+      // was already read from the update above and must still be processed.
+      console.warn(`Could not acknowledge the button tap (continuing anyway): ${err.message}`);
+    }
   }
 
   if (pending.status === "awaiting_review") {
