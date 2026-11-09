@@ -1,9 +1,9 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 0,
-  "topic": null,
-  "category": null,
-  "topicIndex": null,
-  "postText": null,
-  "imageUrl": null
+  "topic": "3 security mistakes developers make when deploying a website to production, and how to avoid them",
+  "category": "web security",
+  "topicIndex": 0,
+  "postText": "I’ve seen a lot of sites go live and then get tripped up by three pretty common security slip‑ups.\n\nFirst, we ship debug tools or default credentials straight into production. A quick sweep for .env files, admin panels, and obvious passwords before the merge can save a lot of headaches.\n\nSecond, we forget to lock down our APIs. Open endpoints are a playground for scanners, as the recent “VoidAccess” project reminds us. Using proper authentication, rate limiting, and a whitelist of allowed origins makes a huge difference.\n\nThird, we ignore proper TLS settings and rely on the default certs. Even a self‑signed cert can expose users to man‑in‑the‑middle attacks. Switch to a reputable CA and enable strong ciphers before the first request hits your site.\n\n#websecurity #devops #infosec",
+  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%203%20security%20mistakes%20developers%20make%20when%20deploying%20a%20website%20to%20production%2C%20and%20how%20to%20avoid%20them%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true"
 }
