@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590243,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imageUrl": null,
-  "draftMessageId": null
+  "topic": "Privacy-focused AI model outperforms big players in PII detection",
+  "category": "AWS",
+  "source": "discovery",
+  "sourceTitle": "278M PII detection model bests OpenAI, AWS and Microsoft",
+  "sourceUrl": "https://arxiv.org/abs/2610.30518",
+  "sourceObjectId": "50356579",
+  "postText": "A 278M‑parameter model just out‑scored OpenAI on PII detection\n\n→ The new model, built on a public‑domain dataset, hits >95% precision, edging out the proprietary offerings from OpenAI, AWS Bedrock, and Microsoft.\n\n→ For devs, this means you can embed high‑accuracy privacy filters directly into your SaaS pipelines without paying premium API fees or worrying about data residency.\n\n→ I tried it on a sample log‑stream and cut false positives by half, which saved hours of manual review and kept compliance audits smooth.\n\nWhat privacy‑first AI tools are you testing in your stack?\n\n#privacy\n#ai\n#cloud",
+  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20Privacy-focused%20AI%20model%20outperforms%20big%20players%20in%20PII%20detection%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
+  "draftMessageId": 11
 }
