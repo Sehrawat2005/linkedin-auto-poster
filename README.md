@@ -134,3 +134,10 @@ Edit the `cron` lines to change timing, or go to the **Actions** tab on GitHub a
 
 When publishing starts failing with a 401 error, your LinkedIn token has expired. Repeat
 step 2 to get a new token, then update the `LINKEDIN_ACCESS_TOKEN` GitHub secret.
+
+## Updating the LinkedIn API version
+
+LinkedIn requires a `LinkedIn-Version` header (format `YYYYMM`) on every request, and each
+version is only supported for about a year before being sunset. If publishing fails with a
+`426 NONEXISTENT_VERSION` error, bump `LINKEDIN_VERSION` in `scripts/postToLinkedIn.js` to
+the latest value listed at https://learn.microsoft.com/en-us/linkedin/marketing/versioning
