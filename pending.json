@@ -2,6 +2,7 @@
   "status": "idle",
   "telegramOffset": 0,
   "topic": null,
+  "category": null,
   "topicIndex": null,
   "postText": null,
   "imageUrl": null

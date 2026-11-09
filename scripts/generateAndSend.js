@@ -2,14 +2,17 @@ const fs = require("fs");
 const path = require("path");
 const { generatePost } = require("./generatePost");
 const { getImageUrl } = require("./generateImage");
+const { getTrendingContext } = require("./fetchTrendingContext");
 const { sendMessage, sendPhoto } = require("./telegram");
 
 const TOPICS_PATH = path.join(__dirname, "..", "topics.json");
 const PENDING_PATH = path.join(__dirname, "..", "pending.json");
 
-async function generateAndSendDraft({ topic, topicIndex, groqKey, botToken, chatId, pending }) {
+async function generateAndSendDraft({ topic, category, topicIndex, groqKey, botToken, chatId, pending }) {
   console.log(`Generating post for topic: "${topic}"`);
-  const postText = await generatePost(topic, groqKey);
+
+  const headlines = await getTrendingContext(category || topic);
+  const postText = await generatePost(topic, groqKey, headlines);
   const imageUrl = getImageUrl(topic);
 
   await sendMessage(
@@ -21,7 +24,8 @@ async function generateAndSendDraft({ topic, topicIndex, groqKey, botToken, chat
 
   pending.status = "awaiting_review";
   pending.topic = topic;
-  pending.topicIndex = topicIndex;
+  pending.category = category ?? null;
+  pending.topicIndex = topicIndex ?? null;
   pending.postText = postText;
   pending.imageUrl = imageUrl;
   pending.telegramOffset = pending.telegramOffset ?? 0;
@@ -49,9 +53,17 @@ async function main() {
     throw new Error("topics.json has no topics");
   }
   const topicIndex = topicsState.nextIndex % topicsState.topics.length;
-  const topic = topicsState.topics[topicIndex];
+  const entry = topicsState.topics[topicIndex];
 
-  await generateAndSendDraft({ topic, topicIndex, groqKey, botToken, chatId, pending });
+  await generateAndSendDraft({
+    topic: entry.text,
+    category: entry.category,
+    topicIndex,
+    groqKey,
+    botToken,
+    chatId,
+    pending,
+  });
 }
 
 if (require.main === module) {
