@@ -1,47 +1,58 @@
 const fs = require("fs");
 const path = require("path");
 const { generatePost } = require("./generatePost");
-const { getImageUrl } = require("./generateImage");
 const { getTrendingContext } = require("./fetchTrendingContext");
-const { sendMessage, sendPhoto } = require("./telegram");
+const { discoverCandidates, generateDiscoveredPost } = require("./discoverTopic");
+const { sendDraftForReview } = require("./sendDraft");
 
-const TOPICS_PATH = path.join(__dirname, "..", "topics.json");
 const PENDING_PATH = path.join(__dirname, "..", "pending.json");
+const HISTORY_PATH = path.join(__dirname, "..", "history.json");
 
-async function generateAndSendDraft({ topic, category, topicIndex, groqKey, botToken, chatId, pending }) {
-  console.log(`Generating post for topic: "${topic}"`);
+function loadHistory() {
+  return JSON.parse(fs.readFileSync(HISTORY_PATH, "utf8"));
+}
 
-  const headlines = await getTrendingContext(category || topic);
+function recordHistory({ topic, sourceObjectId }) {
+  const history = loadHistory();
+  if (sourceObjectId) {
+    history.usedObjectIds = [...(history.usedObjectIds || []), sourceObjectId].slice(-100);
+  }
+  history.usedTopics = [...(history.usedTopics || []), topic].slice(-40);
+  fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2) + "\n");
+}
+
+async function generateDiscoveryDraft({ groqKey, botToken, chatId, pending }) {
+  const history = loadHistory();
+  const candidates = await discoverCandidates(history.usedObjectIds || []);
+  const result = await generateDiscoveredPost({ candidates, usedTopics: history.usedTopics || [], groqKey });
+
+  console.log(
+    `Discovered topic: "${result.topic}"${result.sourceTitle ? ` (from: ${result.sourceTitle})` : " (self-proposed)"}`
+  );
+
+  await sendDraftForReview({ ...result, source: "discovery", botToken, chatId, pending });
+  recordHistory({ topic: result.topic, sourceObjectId: result.sourceObjectId });
+}
+
+async function generateCustomDraft({ topic, groqKey, botToken, chatId, pending }) {
+  console.log(`Generating post for custom topic: "${topic}"`);
+  const headlines = await getTrendingContext(topic);
   const postText = await generatePost(topic, groqKey, headlines);
-  const imageUrl = getImageUrl(topic);
 
-  const sentMessage = await sendMessage(
+  await sendDraftForReview({
+    topic,
+    category: null,
+    sourceTitle: null,
+    sourceUrl: null,
+    sourceObjectId: null,
+    postText,
+    source: "custom",
     botToken,
     chatId,
-    `${postText}\n\n---\nTap a button below, or send a new topic anytime to draft something else.`,
-    {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: "✅ Approve", callback_data: "approve" },
-            { text: "❌ Reject", callback_data: "reject" },
-          ],
-        ],
-      },
-    }
-  );
-  await sendPhoto(botToken, chatId, imageUrl);
+    pending,
+  });
 
-  pending.status = "awaiting_review";
-  pending.topic = topic;
-  pending.category = category ?? null;
-  pending.topicIndex = topicIndex ?? null;
-  pending.postText = postText;
-  pending.imageUrl = imageUrl;
-  pending.draftMessageId = sentMessage.message_id;
-  pending.telegramOffset = pending.telegramOffset ?? 0;
-  fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
-  console.log("Draft sent to Telegram, waiting for your approval.");
+  recordHistory({ topic, sourceObjectId: null });
 }
 
 async function main() {
@@ -59,22 +70,7 @@ async function main() {
     return;
   }
 
-  const topicsState = JSON.parse(fs.readFileSync(TOPICS_PATH, "utf8"));
-  if (!topicsState.topics || topicsState.topics.length === 0) {
-    throw new Error("topics.json has no topics");
-  }
-  const topicIndex = topicsState.nextIndex % topicsState.topics.length;
-  const entry = topicsState.topics[topicIndex];
-
-  await generateAndSendDraft({
-    topic: entry.text,
-    category: entry.category,
-    topicIndex,
-    groqKey,
-    botToken,
-    chatId,
-    pending,
-  });
+  await generateDiscoveryDraft({ groqKey, botToken, chatId, pending });
 }
 
 if (require.main === module) {
@@ -84,4 +80,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { generateAndSendDraft };
+module.exports = { generateDiscoveryDraft, generateCustomDraft };
