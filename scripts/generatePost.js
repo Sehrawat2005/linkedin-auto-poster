@@ -1,8 +1,6 @@
-const GEMINI_MODEL = "gemini-2.0-flash";
+const GROQ_MODEL = "llama-3.3-70b-versatile";
 
 async function generatePost(topic, apiKey) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
-
   const prompt = `Write a LinkedIn post about this topic: "${topic}"
 
 Rules:
@@ -14,23 +12,27 @@ Rules:
 - End with 2-3 relevant, lowercase hashtags, nothing more.
 - Do not include any preamble like "Here's a post:" - output only the post text itself.`;
 
-  const res = await fetch(url, {
+  const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
+      model: GROQ_MODEL,
+      messages: [{ role: "user", content: prompt }],
     }),
   });
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Gemini API error ${res.status}: ${body}`);
+    throw new Error(`Groq API error ${res.status}: ${body}`);
   }
 
   const data = await res.json();
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  const text = data?.choices?.[0]?.message?.content;
   if (!text) {
-    throw new Error(`Gemini returned no text: ${JSON.stringify(data)}`);
+    throw new Error(`Groq returned no text: ${JSON.stringify(data)}`);
   }
 
   return text.trim();

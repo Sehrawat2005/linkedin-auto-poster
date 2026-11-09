@@ -1,6 +1,6 @@
 # LinkedIn Auto Poster
 
-Generates a human-sounding LinkedIn post from a topic (using Gemini's free API tier)
+Generates a human-sounding LinkedIn post from a topic (using Groq's free API tier)
 and publishes it to your personal LinkedIn profile once a day via GitHub Actions.
 Fully free: no paid APIs, no paid hosting.
 
@@ -39,9 +39,9 @@ LINKEDIN_CLIENT_ID=your_client_id LINKEDIN_CLIENT_SECRET=your_client_secret npm 
 It prints a URL — open it in your browser, log in, and approve. The script catches the
 redirect automatically and prints your **access token** in the terminal. Copy it.
 
-## 3. Get a free Gemini API key
+## 3. Get a free Groq API key
 
-1. Go to https://aistudio.google.com/app/apikey
+1. Go to https://console.groq.com/keys
 2. Create an API key (free tier, generous daily limits).
 
 ## 4. Push this folder to a GitHub repo (can be private, free)
@@ -58,7 +58,7 @@ gh repo create linkedin-auto-poster --private --source=. --push
 
 In the repo on GitHub: **Settings → Secrets and variables → Actions → New repository secret**
 
-- `GEMINI_API_KEY` — from step 3
+- `GROQ_API_KEY` — from step 3
 - `LINKEDIN_ACCESS_TOKEN` — from step 2
 
 ## 6. Edit your topics
