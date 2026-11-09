@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { getUpdates, sendMessage } = require("./telegram");
+const { getUpdates, sendMessage, answerCallbackQuery, clearInlineKeyboard } = require("./telegram");
 const { publishPost } = require("./postToLinkedIn");
 const { generateAndSendDraft } = require("./generateAndSend");
 
@@ -10,10 +10,21 @@ const PENDING_PATH = path.join(__dirname, "..", "pending.json");
 function readIncoming(updates, chatId) {
   let decision = null;
   let customTopic = null;
+  let callbackQueryId = null;
   let maxUpdateId = -1;
 
   for (const update of updates) {
     if (update.update_id > maxUpdateId) maxUpdateId = update.update_id;
+
+    if (update.callback_query) {
+      const cq = update.callback_query;
+      const cqChatId = cq.message && cq.message.chat && String(cq.message.chat.id);
+      if (cqChatId !== chatId) continue;
+      if (cq.data === "approve") decision = "approve";
+      else if (cq.data === "reject") decision = "reject";
+      callbackQueryId = cq.id;
+      continue;
+    }
 
     const msg = update.message;
     if (!msg || !msg.text || String(msg.chat.id) !== chatId) continue;
@@ -25,7 +36,7 @@ function readIncoming(updates, chatId) {
     else if (raw.length > 0) customTopic = raw;
   }
 
-  return { decision, customTopic, maxUpdateId };
+  return { decision, customTopic, callbackQueryId, maxUpdateId };
 }
 
 async function main() {
@@ -42,20 +53,28 @@ async function main() {
   const pending = JSON.parse(fs.readFileSync(PENDING_PATH, "utf8"));
 
   const updates = await getUpdates(botToken, pending.telegramOffset);
-  const { decision, customTopic, maxUpdateId } = readIncoming(updates, chatId);
+  const { decision, customTopic, callbackQueryId, maxUpdateId } = readIncoming(updates, chatId);
 
   if (maxUpdateId >= 0) {
     pending.telegramOffset = maxUpdateId + 1;
   }
 
+  if (callbackQueryId) {
+    await answerCallbackQuery(botToken, callbackQueryId, decision === "approve" ? "Approved" : "Rejected");
+  }
+
   if (pending.status === "awaiting_review") {
     if (!decision) {
       if (customTopic) {
-        await sendMessage(botToken, chatId, "You already have a draft awaiting review - reply APPROVE or REJECT first.");
+        await sendMessage(botToken, chatId, "You already have a draft awaiting review - tap a button or reply APPROVE/REJECT first.");
       }
       fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
       console.log("No decision yet.");
       return;
+    }
+
+    if (pending.draftMessageId) {
+      await clearInlineKeyboard(botToken, chatId, pending.draftMessageId);
     }
 
     if (decision === "approve") {
@@ -81,6 +100,7 @@ async function main() {
       pending.topicIndex = null;
       pending.postText = null;
       pending.imageUrl = null;
+      pending.draftMessageId = null;
       fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
     } else {
       console.log("Rejected - generating a new draft for the same topic...");

@@ -2,18 +2,19 @@
 
 Generates a human-sounding LinkedIn post + image from a topic (text via Groq's free
 API, image via Pollinations.ai's free API), sends it to you on Telegram for review,
-and publishes it to your personal LinkedIn profile only after you reply **APPROVE**.
-Reply **REJECT** and it generates a fresh draft on the same topic instead.
+and publishes it to your personal LinkedIn profile only after you tap **Approve**.
+Tap **Reject** and it generates a fresh draft on the same topic instead.
 Fully free: no paid APIs, no paid hosting.
 
 ## How the approval flow works
 
 1. Once a day, a GitHub Actions workflow generates a draft (text + image) from the next
-   topic in `topics.json` and sends it to you on Telegram, with instructions to reply
-   `APPROVE` or `REJECT`.
-2. A second workflow checks every 5 minutes for your reply:
-   - `APPROVE` (or `ok`) → publishes the post + image to LinkedIn, advances to the next topic.
-   - `REJECT` (or `no`) → discards the draft and sends you a new one for the same topic.
+   topic in `topics.json` and sends it to you on Telegram with **Approve ✅** / **Reject ❌**
+   buttons under the message.
+2. A second workflow checks every 5 minutes for your tap (typing `APPROVE`/`REJECT`, or
+   `ok`/`no`, also still works as a fallback):
+   - **Approve** → publishes the post + image to LinkedIn, advances to the next topic.
+   - **Reject** → discards the draft and sends you a new one for the same topic.
 3. State (what's pending review, how far the topic rotation is) lives in `pending.json`
    and `topics.json`, committed back to the repo by the workflows.
 
