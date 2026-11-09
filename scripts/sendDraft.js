@@ -18,12 +18,11 @@ async function sendDraftForReview({
   pending,
 }) {
   const imageUrl = getImageUrl(topic);
-  const sourceLine = sourceUrl ? `\n\nSource: ${sourceUrl}` : "";
 
   const sentMessage = await sendMessage(
     botToken,
     chatId,
-    `${postText}${sourceLine}\n\n---\nTap a button below, or send a new topic anytime to draft something else.`,
+    `${postText}\n\n---\nTap a button below, or send a new topic anytime to draft something else.`,
     {
       reply_markup: {
         inline_keyboard: [
