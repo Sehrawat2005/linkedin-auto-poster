@@ -15,10 +15,20 @@ async function generateAndSendDraft({ topic, category, topicIndex, groqKey, botT
   const postText = await generatePost(topic, groqKey, headlines);
   const imageUrl = getImageUrl(topic);
 
-  await sendMessage(
+  const sentMessage = await sendMessage(
     botToken,
     chatId,
-    `${postText}\n\n---\nReply APPROVE to publish this to LinkedIn, or REJECT to get a new draft.`
+    `${postText}\n\n---\nTap a button below, or send a new topic anytime to draft something else.`,
+    {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "✅ Approve", callback_data: "approve" },
+            { text: "❌ Reject", callback_data: "reject" },
+          ],
+        ],
+      },
+    }
   );
   await sendPhoto(botToken, chatId, imageUrl);
 
@@ -28,6 +38,7 @@ async function generateAndSendDraft({ topic, category, topicIndex, groqKey, botT
   pending.topicIndex = topicIndex ?? null;
   pending.postText = postText;
   pending.imageUrl = imageUrl;
+  pending.draftMessageId = sentMessage.message_id;
   pending.telegramOffset = pending.telegramOffset ?? 0;
   fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
   console.log("Draft sent to Telegram, waiting for your approval.");
