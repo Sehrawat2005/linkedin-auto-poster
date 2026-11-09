@@ -1,8 +1,26 @@
 # LinkedIn Auto Poster
 
-Generates a human-sounding LinkedIn post from a topic (using Groq's free API tier)
-and publishes it to your personal LinkedIn profile once a day via GitHub Actions.
+Generates a human-sounding LinkedIn post + image from a topic (text via Groq's free
+API, image via Pollinations.ai's free API), sends it to you on Telegram for review,
+and publishes it to your personal LinkedIn profile only after you reply **APPROVE**.
+Reply **REJECT** and it generates a fresh draft on the same topic instead.
 Fully free: no paid APIs, no paid hosting.
+
+## How the approval flow works
+
+1. Once a day, a GitHub Actions workflow generates a draft (text + image) and sends it
+   to you on Telegram, with instructions to reply `APPROVE` or `REJECT`.
+2. A second workflow checks every 5 minutes for your reply:
+   - `APPROVE` (or `ok`) → publishes the post + image to LinkedIn, advances to the next topic.
+   - `REJECT` (or `no`) → discards the draft and sends you a new one for the same topic.
+3. State (what's pending review, how far the topic rotation is) lives in `pending.json`
+   and `topics.json`, committed back to the repo by the workflows.
+
+**Note on the public repo:** since this repo needs to be public to stay within GitHub's
+free Actions minutes at a 5-minute polling interval, `pending.json` (your draft post text,
+before you approve it) is briefly visible to anyone browsing the repo until you approve or
+reject it. No credentials are ever stored in the repo — API keys and tokens live only in
+encrypted GitHub Secrets, which stay private even on a public repo.
 
 ## 1. Create a LinkedIn app (one-time, ~5 minutes)
 
@@ -44,36 +62,54 @@ redirect automatically and prints your **access token** in the terminal. Copy it
 1. Go to https://console.groq.com/keys
 2. Create an API key (free tier, generous daily limits).
 
-## 4. Push this folder to a GitHub repo (can be private, free)
+## 4. Create your Telegram bot
+
+1. Open Telegram, message **@BotFather**, and send `/newbot`.
+2. Give it a display name (e.g. "LinkedIn Posts") and a unique username ending in `bot`
+   (e.g. `linkedin_posts_bot` — BotFather will tell you if it's taken).
+3. BotFather gives you a **bot token** — copy it.
+4. Open a chat with your new bot and send it any message (e.g. "hi") so it knows about you.
+5. Get your **chat ID** by visiting this URL in a browser (with your real token):
+   `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates`
+   Find `"chat":{"id":...}` in the JSON response — that number is your chat ID.
+
+## 5. Push this folder to a GitHub repo
+
+This repo needs to be **public** (see note above) to stay within GitHub's free Actions
+minutes at a 5-minute polling interval.
 
 ```
 cd linkedin-auto-poster
 git init
 git add .
 git commit -m "Initial setup"
-gh repo create linkedin-auto-poster --private --source=. --push
+gh repo create linkedin-auto-poster --public --source=. --push
 ```
 
-## 5. Add GitHub secrets
+## 6. Add GitHub secrets
 
 In the repo on GitHub: **Settings → Secrets and variables → Actions → New repository secret**
 
 - `GROQ_API_KEY` — from step 3
+- `TELEGRAM_BOT_TOKEN` — from step 4
+- `TELEGRAM_CHAT_ID` — from step 4
 - `LINKEDIN_ACCESS_TOKEN` — from step 2
 
-## 6. Edit your topics
+## 7. Edit your topics
 
-Open `topics.json` and replace the placeholder topics with your own. Each scheduled run
-picks the next topic in the list, posts about it, and loops back to the start when it
-reaches the end.
+Open `topics.json` and replace the placeholder topics with your own. The rotation only
+advances to the next topic once a draft on the current topic is **approved and published**
+— a rejected draft retries the same topic.
 
-## 7. Done
+## 8. Done
 
-The workflow in `.github/workflows/post.yml` runs daily at 9:00 AM UTC. Edit the `cron`
-line to change the time, or go to the **Actions** tab on GitHub and click **Run workflow**
-to post immediately and test it.
+- `.github/workflows/generate-and-send.yml` runs daily at 9:00 AM UTC and sends you a draft.
+- `.github/workflows/check-approval.yml` runs every 5 minutes and acts on your reply.
+
+Edit the `cron` lines to change timing, or go to the **Actions** tab on GitHub and click
+**Run workflow** on either one to trigger it manually for testing.
 
 ## Re-authorizing every ~60 days
 
-When posts start failing with a 401 error, your LinkedIn token has expired. Repeat step 2
-to get a new token, then update the `LINKEDIN_ACCESS_TOKEN` GitHub secret with the new value.
+When publishing starts failing with a 401 error, your LinkedIn token has expired. Repeat
+step 2 to get a new token, then update the `LINKEDIN_ACCESS_TOKEN` GitHub secret.

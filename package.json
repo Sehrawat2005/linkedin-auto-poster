@@ -2,10 +2,11 @@
   "name": "linkedin-auto-poster",
   "version": "1.0.0",
   "private": true,
-  "description": "Generates a LinkedIn post from a topic using Gemini and publishes it via the LinkedIn API.",
+  "description": "Generates a LinkedIn post + image from a topic using Groq, sends it to Telegram for approval, and publishes it via the LinkedIn API once approved.",
   "type": "commonjs",
   "scripts": {
-    "post": "node scripts/run.js",
+    "generate": "node scripts/generateAndSend.js",
+    "check-approval": "node scripts/checkApproval.js",
     "auth": "node scripts/getLinkedInToken.js"
   },
   "engines": {
