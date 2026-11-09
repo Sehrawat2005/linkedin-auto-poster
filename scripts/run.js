@@ -6,10 +6,10 @@ const { postToLinkedIn } = require("./postToLinkedIn");
 const TOPICS_PATH = path.join(__dirname, "..", "topics.json");
 
 async function main() {
-  const geminiKey = process.env.GEMINI_API_KEY;
+  const groqKey = process.env.GROQ_API_KEY;
   const linkedinToken = process.env.LINKEDIN_ACCESS_TOKEN;
 
-  if (!geminiKey) throw new Error("Missing GEMINI_API_KEY env var");
+  if (!groqKey) throw new Error("Missing GROQ_API_KEY env var");
   if (!linkedinToken) throw new Error("Missing LINKEDIN_ACCESS_TOKEN env var");
 
   const state = JSON.parse(fs.readFileSync(TOPICS_PATH, "utf8"));
@@ -21,7 +21,7 @@ async function main() {
   const topic = state.topics[index];
 
   console.log(`Generating post for topic: "${topic}"`);
-  const postText = await generatePost(topic, geminiKey);
+  const postText = await generatePost(topic, groqKey);
 
   console.log("Generated post:\n" + postText);
 
