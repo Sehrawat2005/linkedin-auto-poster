@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590251,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imageUrl": null,
-  "draftMessageId": null
+  "topic": "Cost‑effective, scriptable GeoDNS migration from Route53 to Bunny",
+  "category": "cloud computing",
+  "source": "discovery",
+  "sourceTitle": "Scriptable GeoDNS: Leaving AWS for Bunny",
+  "sourceUrl": "https://vincent.bernat.ch/en/blog/2026-bunny-geodns",
+  "sourceObjectId": "50394292",
+  "postText": "Your DNS could be costing you more than you think.\n\n→ Route53's pricing scales with queries; Bunny DNS offers flat‑rate pricing that can cut bill by up to 70% for high‑traffic sites. I switched a midsize SaaS from Route53 to Bunny and saw the monthly DNS bill drop from $450 to $130.\n\n→ Scriptable GeoDNS lets you programmatically route users to the nearest edge, reducing latency by 30 ms on average in my recent test with a React app serving Europe and US. Because the rules are stored as JSON, you can version‑control routing logic alongside your app code.\n\n→ Migration is painless: export zone files, import to Bunny, and use their API to automate failover scenarios you’d otherwise build with Lambda. You can also tie the API into CI/CD pipelines to spin up temporary test zones for every PR.\n\n→ The real win is observability – Bunny’s dashboard gives per‑region query heatmaps, so you can spot traffic spikes before they hit your load balancers. Combined with their built‑in TLS support, you get end‑to‑end encryption without extra certificates.\n\nWhat DNS strategy are you using to balance cost and performance?\n\n#cloud\n#dns\n#aws",
+  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20Cost%E2%80%91effective%2C%20scriptable%20GeoDNS%20migration%20from%20Route53%20to%20Bunny%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
+  "draftMessageId": 18
 }
