@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590258,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imageUrl": null,
-  "draftMessageId": null
+  "topic": "Analyzing daily GPU rental price differences across major cloud providers and practical cost‑saving tactics",
+  "category": "cloud computing",
+  "source": "discovery",
+  "sourceTitle": "Show HN: Daily GPU Rental Prices Across AWS, Azure, RunPod and Vast.ai",
+  "sourceUrl": "https://taipeiledger.com/gpu/",
+  "sourceObjectId": "50449232",
+  "postText": "GPU costs are blowing up your cloud bill—let's fix that.\n\n→ I pulled daily spot prices from AWS, Azure, RunPod, and Vast.ai for the past month. The spread is massive: a single V100 can be $0.45/hr on AWS, $0.30 on Azure, $0.15 on RunPod, and sometimes under $0.10 on Vast.ai.\n\n→ Spot availability drives the swing. Azure’s price is stable because they batch‑reserve capacity, while Vast.ai’s marketplace reacts instantly to supply, giving you cheap bursts but also sudden spikes when demand spikes.\n\n→ Your workload pattern decides the winner. For a continuous training job of 200 GPU‑hours, AWS still wins on reliability, but a nightly batch of 20 hours drops cost by 70% if you hop to RunPod or Vast.ai.\n\n→ Automation saves you time. I built a simple Python script that checks the four APIs every hour and launches the cheapest instance that meets my GPU and network needs. It shaved $1,200 off my quarterly budget.\n\n→ Forecasting tools help avoid surprise spikes. By feeding your historical GPU usage into AWS Cost Explorer or third‑party dashboards, you can set alerts before prices jump.\n\nWhat tricks do you use to keep GPU spend in check?\n\n#cloudcomputing\n#aws\n#costoptimization",
+  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20Analyzing%20daily%20GPU%20rental%20price%20differences%20across%20major%20cloud%20providers%20and%20practical%20cost%E2%80%91saving%20tactics%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
+  "draftMessageId": 28
 }
