@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590257,
-  "topic": "Securing third‑party AWS integrations after recent backdoor attacks",
-  "category": "AWS",
-  "source": "discovery",
-  "sourceTitle": "Attackers backdoor trusted AWS integrations to steal secrets",
-  "sourceUrl": "https://www.theregister.com/security/2026/11/09/attackers-backdoor-trusted-aws-integrations-to-steal-secrets/5308553",
-  "sourceObjectId": "50433368",
-  "postText": "Your AWS integrations might be an open door for hackers.\n\n→ Attackers are compromising the IAM roles that third‑party services assume, injecting malicious code that silently harvests secrets. I saw a recent breach where a compromised CI/CD plugin exfiltrated API keys from dozens of customers within hours.\n\n→ The breach often exploits the trust relationship between your account and the service’s AWS account, so revoking permissions after the fact is too late. Because these roles are whitelisted, the attacker can spin up resources that look legitimate to your monitoring tools.\n\n→ Simple mitigations: enforce least‑privilege for cross‑account roles, enable AWS CloudTrail insights, and use AWS Secrets Manager rotation. Adding condition keys like aws:SourceAccount and aws:PrincipalTag can further narrow who can assume the role.\n\n→ Adopt a zero‑trust stance: validate each integration with code signing, use service control policies, and regularly audit external connections. I now require every third‑party integration to publish a signed manifest and run a quarterly permission review.\n\n→ Invest in runtime detection: AWS GuardDuty and anomaly‑based alerts can spot unusual role assumption patterns. In my last project, GuardDuty flagged a role that was assuming privileges from an IP range never seen before, leading us to block the attacker within minutes.\n\nWhat steps have you added to harden your AWS supply chain?\n\n#aws\n#cloudsecurity\n#devops",
-  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20Securing%20third%E2%80%91party%20AWS%20integrations%20after%20recent%20backdoor%20attacks%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
-  "draftMessageId": 23
+  "status": "idle",
+  "telegramOffset": 249590258,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imageUrl": null,
+  "draftMessageId": null
 }
