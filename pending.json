@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590259,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
+  "topic": "Integrating AI agents into software engineering workflows with ASE 2.0",
+  "category": "software engineering",
+  "source": "discovery",
+  "sourceTitle": "Agentic Software Engineering (ASE) 2.0: Grilling, Task Boards, Agents, and More",
+  "sourceUrl": "https://ase.tools/news/",
+  "sourceObjectId": "50413496",
+  "postText": "Agents are writing code—are we still engineers?\n\n→ ASE 2.0 treats agents like junior devs you interview daily, running a “grill” session where I feed them a failing test and watch their reasoning. In minutes I get a diff that surfaces hidden assumptions and often reveals edge‑case logic I missed.\n\n→ Task boards now list AI‑generated tickets alongside human ones, and I assign priority based on confidence scores before letting the agent iterate. The result is a cycle‑time drop from days to a few hours for routine CRUD features, freeing the team for higher‑value work.\n\n→ Accountability became the biggest surprise; by version‑controlling the agent’s prompt and its output, I can roll back a misbehaving model just like any code change. Audits now read like regular pull‑request histories, making compliance trivial.\n\n→ You still need a human gate, though—about 15 % of my sprint is spent reviewing agent PRs, catching edge‑case logic and security gaps. That sweet‑spot balances automation with oversight, avoiding blind trust.\n\n→ Scaling this pattern across squads is simple: I expose a shared prompt library and each team spins up its own agent sandbox, keeping costs predictable and performance consistent. Teams report a 20 % reduction in time‑to‑first‑code for new micro‑services.\n\nWhat’s your experience mixing AI agents into your dev workflow?\n\n#softwareengineering\n#aiagents\n#devops",
   "imageUrl": null,
-  "draftMessageId": null
+  "draftMessageId": 33
 }
