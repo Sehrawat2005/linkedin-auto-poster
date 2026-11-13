@@ -1,13 +1,13 @@
 {
   "status": "awaiting_review",
-  "telegramOffset": 249590260,
-  "topic": "Integrating AI agents into software engineering workflows with ASE 2.0",
-  "category": "software engineering",
+  "telegramOffset": 249590262,
+  "topic": "Hidden Lambda billing for idle memory after execution",
+  "category": "AWS",
   "source": "discovery",
-  "sourceTitle": "Agentic Software Engineering (ASE) 2.0: Grilling, Task Boards, Agents, and More",
-  "sourceUrl": "https://ase.tools/news/",
-  "sourceObjectId": "50413496",
-  "postText": "Agents are writing code—are we still engineers?\n\n→ ASE 2.0 treats agents like junior devs you interview daily, running a “grill” session where I feed them a failing test and watch their reasoning. In minutes I get a diff that surfaces hidden assumptions and often reveals edge‑case logic I missed.\n\n→ Task boards now list AI‑generated tickets alongside human ones, and I assign priority based on confidence scores before letting the agent iterate. The result is a cycle‑time drop from days to a few hours for routine CRUD features, freeing the team for higher‑value work.\n\n→ Accountability became the biggest surprise; by version‑controlling the agent’s prompt and its output, I can roll back a misbehaving model just like any code change. Audits now read like regular pull‑request histories, making compliance trivial.\n\n→ You still need a human gate, though—about 15 % of my sprint is spent reviewing agent PRs, catching edge‑case logic and security gaps. That sweet‑spot balances automation with oversight, avoiding blind trust.\n\n→ Scaling this pattern across squads is simple: I expose a shared prompt library and each team spins up its own agent sandbox, keeping costs predictable and performance consistent. Teams report a 20 % reduction in time‑to‑first‑code for new micro‑services.\n\nWhat’s your experience mixing AI agents into your dev workflow?\n\n#softwareengineering\n#aiagents\n#devops",
-  "imageUrl": null,
-  "draftMessageId": 33
+  "sourceTitle": "AWS Lambda Web Functions keep billing memory ~7 minutes after the last request",
+  "sourceUrl": "https://www.easel.sh/blog/lambda-web-functions-idle-memory",
+  "sourceObjectId": "50470445",
+  "postText": "Your Lambda might be silently draining dollars for minutes after it finishes.\n\n→ AWS recently showed that Lambda Web Functions keep the allocated memory alive for about 7 minutes after the last request.\nThat means you’re paying for idle time even when no traffic arrives.\n\n→ The billing model charges per GB‑second, so a 128 MB function idle for 7 minutes adds roughly $0.01 per invocation.\nScale that across thousands of invocations and the extra cost balloons.\n\n→ You can mitigate by adding a short “keep‑warm” wrapper that explicitly frees resources, or by switching to provisioned concurrency with a tighter timeout.\nMonitoring CloudWatch metrics for “Duration” and “Max Memory Used” helps spot lingering allocations.\n\n→ This also highlights a broader lesson: serverless isn’t free of waste; you still need observability and cost guardrails.\nTreat each function like a micro‑VM that you must shut down cleanly.\n\n→ Finally, schedule a quarterly cost‑review using AWS Cost Explorer's “Lambda Usage” report to catch anomalies before they grow.\nCombine that with the open‑source Lambda Power Tuning tool to right‑size memory and avoid paying for unused capacity.\n\nWhat steps have you taken to audit hidden Lambda costs in your stack?\n\n#aws\n#serverless\n#cloudcosts",
+  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20Hidden%20Lambda%20billing%20for%20idle%20memory%20after%20execution%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
+  "draftMessageId": 40
 }

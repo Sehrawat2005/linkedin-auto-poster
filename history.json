@@ -5,7 +5,8 @@
     "50394292",
     "50433368",
     "50449232",
-    "50413496"
+    "50413496",
+    "50470445"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -13,6 +14,7 @@
     "Cost‑effective, scriptable GeoDNS migration from Route53 to Bunny",
     "Securing third‑party AWS integrations after recent backdoor attacks",
     "Analyzing daily GPU rental price differences across major cloud providers and practical cost‑saving tactics",
-    "Integrating AI agents into software engineering workflows with ASE 2.0"
+    "Integrating AI agents into software engineering workflows with ASE 2.0",
+    "Hidden Lambda billing for idle memory after execution"
   ]
 }
