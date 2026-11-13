@@ -9,6 +9,14 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// The model occasionally emits a literal backslash-n (two characters) instead of
+// an actual line break when writing JSON output - this shows up as a stray "\n"
+// right before each bullet instead of a real newline. Normalize it away here, the
+// single choke point every draft passes through before being sent or published.
+function sanitizePostText(text) {
+  return text.replace(/\\r\\n|\\n/g, "\n").replace(/\\t/g, " ");
+}
+
 async function trySendPhoto(botToken, chatId, imageUrl) {
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
@@ -35,6 +43,7 @@ async function sendDraftForReview({
   pending,
 }) {
   const imageUrl = getImageUrl(topic);
+  postText = sanitizePostText(postText);
 
   const sentMessage = await sendMessage(
     botToken,
