@@ -11,10 +11,16 @@ function sleep(ms) {
 
 // The model occasionally emits a literal backslash-n (two characters) instead of
 // an actual line break when writing JSON output - this shows up as a stray "\n"
-// right before each bullet instead of a real newline. Normalize it away here, the
+// right before each bullet instead of a real newline. It also sometimes uses a
+// unicode arrow/non-breaking-hyphen that renders as a stray glyph (reported as a
+// stray "n") on some Telegram clients/fonts. Normalize all of this away here, the
 // single choke point every draft passes through before being sent or published.
 function sanitizePostText(text) {
-  return text.replace(/\\r\\n|\\n/g, "\n").replace(/\\t/g, " ");
+  return text
+    .replace(/\\r\\n|\\n/g, "\n")
+    .replace(/\\t/g, " ")
+    .replace(/→/g, "-") // → arrow -> plain hyphen
+    .replace(/[‑–—]/g, "-"); // non-breaking hyphen / en/em dash -> plain hyphen
 }
 
 async function trySendPhoto(botToken, chatId, imageUrl) {

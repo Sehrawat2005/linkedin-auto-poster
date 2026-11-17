@@ -10,7 +10,7 @@ async function generatePost(topic, apiKey, headlines = []) {
 Structure it like a high-performing LinkedIn post, not a plain paragraph dump:
 - Line 1: a short, punchy hook (under 12 words) that makes someone stop scrolling - a bold claim, a surprising detail, or a direct question. No generic openers like "In today's world" or "Let's talk about".
 - Blank line after the hook.
-- Body: 3-5 points, each its own short paragraph (1-2 sentences, short lines). Start each one with a simple marker like "→" so it scans as a list, not a wall of text.
+- Body: 3-5 points, each its own short paragraph (1-2 sentences, short lines). Start each one with a plain hyphen "-" (ASCII character, not an arrow or bullet symbol) so it scans as a list, not a wall of text.
 - Blank line between every paragraph - lots of white space, nothing longer than 2 sentences in a row.
 - Closing line: one short line that gives a clear takeaway or asks a genuine question to invite comments.
 - Blank line, then 2-3 relevant lowercase hashtags on their own line.

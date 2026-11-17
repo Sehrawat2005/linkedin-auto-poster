@@ -86,7 +86,7 @@ Respond with ONLY a JSON object (no markdown fences, no extra commentary) with e
 The "post" value must follow this structure:
 - Line 1: a short, punchy hook (under 12 words) that makes someone stop scrolling - a bold claim, a surprising detail, or a direct question. No generic openers like "In today's world".
 - Blank line after the hook.
-- Body: 3-5 points, each its own short paragraph (1-2 sentences, short lines), each starting with "→".
+- Body: 3-5 points, each its own short paragraph (1-2 sentences, short lines), each starting with a plain hyphen "-" (ASCII character, not an arrow or bullet symbol).
 - Blank line between every paragraph - lots of white space, nothing longer than 2 sentences in a row.
 - Closing line: one short line with a clear takeaway or a genuine question to invite comments.
 - Blank line, then 2-3 relevant lowercase hashtags on their own line.
