@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590263,
-  "topic": "Serverless ClickHouse on AWS Fargate for cost‑effective analytics",
-  "category": "cloud computing",
-  "source": "discovery",
-  "sourceTitle": "Building a Serverless ClickHouse",
-  "sourceUrl": "https://jordivillar.com/blog/building-a-serverless-clickhouse",
-  "sourceObjectId": "50508016",
-  "postText": "You can run ClickHouse without managing servers-yes, really.\n\n- I built a serverless pipeline where Lambda functions spin up ClickHouse containers on Fargate only when a query arrives, and results are streamed back through API Gateway. The setup uses S3 for raw logs, and Athena for ad-hoc queries that feed ClickHouse.\n\n- Latency stayed under 200 ms for typical 1-GB scans because the cold start cost is amortized by keeping a warm pool of containers, which I tuned with provisioned concurrency. Even during peak loads, the warm pool kept response times flat, avoiding the typical Lambda cold-start spikes.\n\n- The cost model turned out to be 30 % cheaper than a permanently-running ClickHouse on EC2 for my 50 TB/month query volume, thanks to pay-per-invocation pricing and S3 storage for data. I also enabled S3 Intelligent-Tiering for older data, pushing costs down another 5 %.\n\n- The biggest trade-off is that complex joins across massive partitions still need careful sharding; I had to redesign my schema to favor time-series inserts and pre-aggregated tables. If you need full relational joins, consider a hybrid approach with Redshift Serverless for those rare queries.\n\n- No patching or OS upgrades ever-updates are just new container images, which CI/CD pushes automatically. Rollbacks are as simple as swapping the image tag, so downtime is virtually zero.\n\nHas anyone tried serverless analytics with ClickHouse? Share your findings.\n\n#cloudcomputing\n#serverless\n#clickhouse",
-  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20Serverless%20ClickHouse%20on%20AWS%20Fargate%20for%20cost%E2%80%91effective%20analytics%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
-  "draftMessageId": 46
+  "status": "idle",
+  "telegramOffset": 249590265,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imageUrl": null,
+  "draftMessageId": null
 }
