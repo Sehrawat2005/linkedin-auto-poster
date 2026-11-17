@@ -1,9 +1,10 @@
 name: Generate draft and send for review
 
 on:
-  schedule:
-    - cron: "30 5 * * *" # 5:30 AM UTC = 11:00 AM IST daily — edit this to change the time
-  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab
+  # GitHub's own schedule trigger was firing 7-8 hours late on this repo, so daily
+  # generation is instead triggered by an external cron (cron-job.org) calling this
+  # workflow's dispatch API at 5:30 AM UTC (11:00 AM IST) - see README for setup.
+  workflow_dispatch: {} # lets you trigger a run manually, or via an external cron
 
 permissions:
   contents: write
