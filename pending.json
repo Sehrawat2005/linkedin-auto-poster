@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
+  "status": "idle",
   "telegramOffset": 249590263,
-  "topic": "AI‑generated AWS emulator reshapes developer workflow",
-  "category": "AWS",
-  "source": "discovery",
-  "sourceTitle": "AWS Emulator and the engineer's job when agents write the code",
-  "sourceUrl": "https://www.allthingsdistributed.com/2026/11/aws-emulator-and-the-engineers-job-when-agents-write-the-code.html",
-  "sourceObjectId": "50456740",
-  "postText": "Can AI‑built AWS emulators replace your dev sandbox?\n\n→ I’ve been playing with the new open‑source AWS emulator that claims to mimic most services locally. The codebase was generated entirely by AI agents, from the Dockerfiles to the service stubs.\n\n→ For engineers, the job flips. Instead of hand‑crafting mocks, we spend time defining high‑level behaviours and verifying that the emulator matches production APIs. It’s more about prompt‑engineering than plumbing.\n\n→ The trade‑off is trust. Auto‑generated emulators can miss edge‑case permissions or timing quirks, so a quick sanity‑check suite is non‑negotiable. Treat the emulator as a contract you must test against.\n\n→ In my recent sprint, swapping a real RDS instance for the AI‑driven emulator cut our integration tests from 12 minutes to 8 minutes – a 33 % speed boost – while catching a missing IAM policy that would have broken a live deployment.\n\n→ From a cost perspective, running dozens of local emulated services eliminates the need for expensive on‑demand cloud instances during CI, saving roughly $200 per month for a small team. The flip side is the initial compute needed to train the agents, but that’s a one‑time hit.\n\nWhat’s your experience with AI‑generated dev environments? Do you see them becoming standard?\n\n#aws\n#cloudcomputing\n#devops",
-  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20AI%E2%80%91generated%20AWS%20emulator%20reshapes%20developer%20workflow%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
-  "draftMessageId": 44
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imageUrl": null,
+  "draftMessageId": null
 }
