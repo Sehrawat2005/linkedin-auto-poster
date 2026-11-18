@@ -8,7 +8,8 @@
     "50413496",
     "50470445",
     "50456740",
-    "50508016"
+    "50508016",
+    "50533270"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -19,6 +20,7 @@
     "Integrating AI agents into software engineering workflows with ASE 2.0",
     "Hidden Lambda billing for idle memory after execution",
     "AI‑generated AWS emulator reshapes developer workflow",
-    "Serverless ClickHouse on AWS Fargate for cost‑effective analytics"
+    "Serverless ClickHouse on AWS Fargate for cost‑effective analytics",
+    "Open‑source LLM inference on AWS Trainium with TrnRT"
   ]
 }

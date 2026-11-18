@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590265,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
+  "topic": "Open‑source LLM inference on AWS Trainium with TrnRT",
+  "category": "AWS",
+  "source": "discovery",
+  "sourceTitle": "Show HN: TrnRT – An open-source LLM inference engine for AWS Trainium",
+  "sourceUrl": "https://github.com/RunanywhereAI/trnrt",
+  "sourceObjectId": "50533270",
+  "postText": "Trainium is finally getting the open-source LLM love it deserves\n\n- The new TrnRT engine shows you can run GPT-style models on Trainium with latency under 30 ms per token, beating many GPU setups on cost per token.\n\n- Because it’s built on the same AWS Neuron SDK, integration with SageMaker or EKS is a few CLI commands, meaning you don’t need a dedicated ML ops team to spin up inference.\n\n- The open-source nature means you can tweak the kernel for your own model size, and the repo already includes scripts to benchmark on a single Trainium chip vs a p4d.24xlarge GPU - the results are eye-opening for workloads under 2 B parameters.\n\n- For startups, the pricing model of Trainium (pay-as-you-go with no upfront hardware) turns what used to be a $10k GPU cluster into a few cents per hour, making experimental LLM services financially viable.\n\n- The community around TrnRT is already contributing optimizations for mixed-precision inference and adding support for emerging tokenizers, which signals a fast-moving ecosystem that could keep Trainium relevant even as newer chips arrive.\n\nWhat inference workloads would you move to Trainium first, and why?\n\n#aws\n#ml\n#cloudcomputing",
   "imageUrl": null,
-  "draftMessageId": null
+  "draftMessageId": 51
 }
