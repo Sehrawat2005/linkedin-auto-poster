@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590267,
-  "topic": "Serverless peer‑to‑peer multiplayer using Trystero",
-  "category": "serverless",
-  "source": "discovery",
-  "sourceTitle": "Trystero – Serverless peer-to-peer multiplayer for the web",
-  "sourceUrl": "https://trystero.dev/",
-  "sourceObjectId": "50519524",
-  "postText": "What if you could host a multiplayer game without a single server?\n\n- Trystero is a lightweight library that stitches browsers together with WebRTC, turning each client into a node in a mesh. No dedicated backend, just static files served from S3 or Netlify.\n\n- That means you pay zero for server time. For hobby projects or early-stage MVPs, the cost-to-launch drops from hundreds to literally nothing, and scaling is automatic - the more players join, the more peers share the load.\n\n- Latency is a double-edged sword. Direct peer links cut round-trip time, which is great for fast-paced games, but NAT traversal can add a few milliseconds. Using a TURN server as a fallback keeps connections reliable without re-introducing a full server stack.\n\n- Security isn’t an afterthought. All traffic is end-to-end encrypted, and because data never touches a central point, the attack surface shrinks dramatically. Still, you should validate inputs and consider cheat-prevention logic on each client.\n\n- I built a simple real-time Tic-Tac-Toe in under 200 lines using Trystero and deployed it on GitHub Pages. The whole thing runs in the browser, and I saw 30 concurrent games with zero latency spikes.\n\nWhat real-world use cases could benefit from a serverless P2P architecture? Let’s brainstorm.\n\n#serverless\n#webdev\n#cloudcomputing",
+  "status": "idle",
+  "telegramOffset": 249590268,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
   "imageUrl": null,
-  "draftMessageId": 55
+  "draftMessageId": null
 }
