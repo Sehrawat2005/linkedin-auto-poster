@@ -1,13 +1,13 @@
 {
   "status": "awaiting_review",
-  "telegramOffset": 249590265,
-  "topic": "Open‑source LLM inference on AWS Trainium with TrnRT",
-  "category": "AWS",
+  "telegramOffset": 249590267,
+  "topic": "Serverless peer‑to‑peer multiplayer using Trystero",
+  "category": "serverless",
   "source": "discovery",
-  "sourceTitle": "Show HN: TrnRT – An open-source LLM inference engine for AWS Trainium",
-  "sourceUrl": "https://github.com/RunanywhereAI/trnrt",
-  "sourceObjectId": "50533270",
-  "postText": "Trainium is finally getting the open-source LLM love it deserves\n\n- The new TrnRT engine shows you can run GPT-style models on Trainium with latency under 30 ms per token, beating many GPU setups on cost per token.\n\n- Because it’s built on the same AWS Neuron SDK, integration with SageMaker or EKS is a few CLI commands, meaning you don’t need a dedicated ML ops team to spin up inference.\n\n- The open-source nature means you can tweak the kernel for your own model size, and the repo already includes scripts to benchmark on a single Trainium chip vs a p4d.24xlarge GPU - the results are eye-opening for workloads under 2 B parameters.\n\n- For startups, the pricing model of Trainium (pay-as-you-go with no upfront hardware) turns what used to be a $10k GPU cluster into a few cents per hour, making experimental LLM services financially viable.\n\n- The community around TrnRT is already contributing optimizations for mixed-precision inference and adding support for emerging tokenizers, which signals a fast-moving ecosystem that could keep Trainium relevant even as newer chips arrive.\n\nWhat inference workloads would you move to Trainium first, and why?\n\n#aws\n#ml\n#cloudcomputing",
+  "sourceTitle": "Trystero – Serverless peer-to-peer multiplayer for the web",
+  "sourceUrl": "https://trystero.dev/",
+  "sourceObjectId": "50519524",
+  "postText": "What if you could host a multiplayer game without a single server?\n\n- Trystero is a lightweight library that stitches browsers together with WebRTC, turning each client into a node in a mesh. No dedicated backend, just static files served from S3 or Netlify.\n\n- That means you pay zero for server time. For hobby projects or early-stage MVPs, the cost-to-launch drops from hundreds to literally nothing, and scaling is automatic - the more players join, the more peers share the load.\n\n- Latency is a double-edged sword. Direct peer links cut round-trip time, which is great for fast-paced games, but NAT traversal can add a few milliseconds. Using a TURN server as a fallback keeps connections reliable without re-introducing a full server stack.\n\n- Security isn’t an afterthought. All traffic is end-to-end encrypted, and because data never touches a central point, the attack surface shrinks dramatically. Still, you should validate inputs and consider cheat-prevention logic on each client.\n\n- I built a simple real-time Tic-Tac-Toe in under 200 lines using Trystero and deployed it on GitHub Pages. The whole thing runs in the browser, and I saw 30 concurrent games with zero latency spikes.\n\nWhat real-world use cases could benefit from a serverless P2P architecture? Let’s brainstorm.\n\n#serverless\n#webdev\n#cloudcomputing",
   "imageUrl": null,
-  "draftMessageId": 51
+  "draftMessageId": 55
 }
