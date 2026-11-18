@@ -94,31 +94,45 @@ The "post" value must follow this structure:
 - 180-280 words total, excluding hashtags. Use the extra room for a real example, a concrete number, or a bit more depth on each point - don't just pad with filler.
 - Plain text only - no markdown asterisks or headers, since LinkedIn displays them as literal characters, not formatting.`;
 
-  const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${groqKey}`,
-    },
-    body: JSON.stringify({
-      model: GROQ_MODEL,
-      messages: [{ role: "user", content: prompt }],
-      response_format: { type: "json_object" },
-    }),
-  });
+  // The model occasionally fails to produce valid JSON on a given attempt
+  // (Groq rejects it with json_validate_failed) - this is a one-off generation
+  // hiccup, not a real error, so retry once with a fresh generation before giving up.
+  let parsed;
+  let lastErr;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${groqKey}`,
+        },
+        body: JSON.stringify({
+          model: GROQ_MODEL,
+          messages: [{ role: "user", content: prompt }],
+          response_format: { type: "json_object" },
+        }),
+      });
 
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Groq API error ${res.status}: ${body}`);
+      if (!res.ok) {
+        const body = await res.text();
+        throw new Error(`Groq API error ${res.status}: ${body}`);
+      }
+
+      const data = await res.json();
+      const content = data?.choices?.[0]?.message?.content;
+      if (!content) {
+        throw new Error(`Groq returned no content: ${JSON.stringify(data)}`);
+      }
+
+      parsed = extractJson(content);
+      break;
+    } catch (err) {
+      lastErr = err;
+      console.warn(`Generation attempt ${attempt}/2 failed: ${err.message}`);
+    }
   }
-
-  const data = await res.json();
-  const content = data?.choices?.[0]?.message?.content;
-  if (!content) {
-    throw new Error(`Groq returned no content: ${JSON.stringify(data)}`);
-  }
-
-  const parsed = extractJson(content);
+  if (!parsed) throw lastErr;
   const chosen = parsed.sourceIndex && candidates[parsed.sourceIndex - 1] ? candidates[parsed.sourceIndex - 1] : null;
 
   return {

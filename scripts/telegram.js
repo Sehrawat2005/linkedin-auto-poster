@@ -1,5 +1,26 @@
 const TELEGRAM_API = "https://api.telegram.org/bot";
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Transient network blips (ETIMEDOUT etc.) hitting Telegram from the GitHub Actions
+// runner happen occasionally and are not actionable - retry a couple times before
+// giving up, so a single blip doesn't fail the whole run and spam a failure email.
+async function withRetry(fn, attempts = 3, delayMs = 2000) {
+  let lastErr;
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      console.warn(`Attempt ${i}/${attempts} failed: ${err.message}`);
+      if (i < attempts) await sleep(delayMs);
+    }
+  }
+  throw lastErr;
+}
+
 async function sendMessage(token, chatId, text, extra = {}) {
   const res = await fetch(`${TELEGRAM_API}${token}/sendMessage`, {
     method: "POST",
@@ -33,12 +54,14 @@ async function getUpdates(token, offset) {
     url.searchParams.set("offset", String(offset));
   }
 
-  const res = await fetch(url.toString());
-  const data = await res.json();
-  if (!res.ok || !data.ok) {
-    throw new Error(`Telegram getUpdates failed: ${JSON.stringify(data)}`);
-  }
-  return data.result;
+  return withRetry(async () => {
+    const res = await fetch(url.toString());
+    const data = await res.json();
+    if (!res.ok || !data.ok) {
+      throw new Error(`Telegram getUpdates failed: ${JSON.stringify(data)}`);
+    }
+    return data.result;
+  });
 }
 
 async function answerCallbackQuery(token, callbackQueryId, text) {
