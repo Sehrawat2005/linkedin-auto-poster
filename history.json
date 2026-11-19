@@ -12,7 +12,8 @@
     "50533270",
     "50519524",
     "50503655",
-    "50549939"
+    "50549939",
+    "50545800"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -27,6 +28,7 @@
     "Open‑source LLM inference on AWS Trainium with TrnRT",
     "Serverless peer‑to‑peer multiplayer using Trystero",
     "PowerQueue: free multi‑cloud message queue and its practical implications",
-    "MotherDuck now on Azure – what multi‑cloud data lake means for devs"
+    "MotherDuck now on Azure – what multi‑cloud data lake means for devs",
+    "Testing Terraform locally with an AWS emulator"
   ]
 }

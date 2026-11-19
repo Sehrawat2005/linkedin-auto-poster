@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590269,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imageUrl": null,
-  "draftMessageId": null
+  "topic": "Testing Terraform locally with an AWS emulator",
+  "category": "aws",
+  "source": "discovery",
+  "sourceTitle": "Testing Terraform with AWS Emulator",
+  "sourceUrl": "https://notes.hatedabamboo.me/terraform-tests-with-aws-emulator/",
+  "sourceObjectId": "50545800",
+  "postText": "Stop waiting for cloud spins-test Terraform locally in seconds.\n\n- I started using an AWS emulator (LocalStack) to spin up S3, DynamoDB, IAM etc., and ran my Terraform plans entirely offline. It cut my feedback loop from minutes to seconds and saved a handful of dollars in EC2 time.\n\n- The key is to match the provider versions and enable the `skip_credentials_validation` flag, otherwise Terraform will still reach out to real AWS endpoints. I kept a small `versions.tf` file that pins both Terraform and the AWS provider to the same releases used in the emulator.\n\n- I discovered a hidden gotcha: resources that rely on eventual consistency, like IAM role attachment, can flake in the emulator. Adding a `time_sleep` provisioner or using the `depends_on` meta-argument kept runs deterministic.\n\n- Once the plan is green locally, I run a quick `terraform apply` against a real dev account for a smoke test. The diff is almost always empty, giving me confidence before a PR merge.\n\n- In CI pipelines I spin up the emulator in a Docker container, run `terraform init && terraform validate`, and fail fast if any provider schema mismatches appear. It keeps my PR checks cheap and fast.\n\nHave you tried local AWS emulation for IaC, and what tricks saved you the most time?\n\n#aws\n#terraform\n#cloudcomputing\n#devops\n#infrastructureascode\n#softwaredevelopment",
+  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%2C%20A%20laptop%20screen%20reflects%20a%20miniature%20data%20center%2C%20while%20a%20glowing%20Docker%20container%20hovers%20above%2C%20casting%20neon%20light%20onto%20a%20tangled%20Terraform%20blueprint.%2C%20dramatic%20lighting%2C%20bold%20color%20contrast%2C%20dynamic%20angle%2C%20striking%20composition%2C%20sharp%20focus%2C%20high%20detail%2C%20eye-catching%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
+  "draftMessageId": 67
 }
