@@ -59,19 +59,24 @@ async function sendDraftForReview({
 }) {
   postText = sanitizePostText(postText);
 
+  // pending.json gets committed to the (public) repo by the bot after every
+  // run, so the API key must NEVER end up in a persisted field - only the
+  // plain concept text is stored; the keyed URL is built fresh in-memory
+  // wherever it's actually needed (here, and again at publish time).
+  let imagePrompt = null;
   let imageUrl = null;
   if (IMAGES_ENABLED) {
     // The raw topic phrase is too abstract for the image model on its own (it
     // tends to free-associate on one word and produce something unrelated) -
     // ask Groq for a concrete scene grounded in the actual post first. Non-fatal:
     // fall back to the old topic-based prompt if this call fails for any reason.
-    let imageSubject = topic;
+    imagePrompt = topic;
     try {
-      imageSubject = await generateScenePrompt(postText, topic, groqKey);
+      imagePrompt = await generateScenePrompt(postText, topic, groqKey);
     } catch (err) {
       console.warn(`Scene prompt generation failed, falling back to topic (non-fatal): ${err.message}`);
     }
-    imageUrl = getImageUrl(imageSubject, pollinationsKey);
+    imageUrl = getImageUrl(imagePrompt, pollinationsKey);
   }
 
   const sentMessage = await sendMessage(
@@ -101,7 +106,7 @@ async function sendDraftForReview({
   pending.sourceUrl = sourceUrl ?? null;
   pending.sourceObjectId = sourceObjectId ?? null;
   pending.postText = postText;
-  pending.imageUrl = imageUrl;
+  pending.imagePrompt = imagePrompt;
   pending.draftMessageId = sentMessage.message_id;
   pending.telegramOffset = pending.telegramOffset ?? 0;
   fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
@@ -110,7 +115,7 @@ async function sendDraftForReview({
     const photoSent = await trySendPhoto(botToken, chatId, imageUrl);
     if (!photoSent) {
       console.warn("Image failed to send after retries - continuing text-only, LinkedIn publish will skip the image too.");
-      pending.imageUrl = null;
+      pending.imagePrompt = null;
       fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
       try {
         await sendMessage(botToken, chatId, "(Couldn't generate a preview image this time - this will publish as text-only.)");

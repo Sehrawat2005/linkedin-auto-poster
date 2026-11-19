@@ -3,6 +3,7 @@ const path = require("path");
 const { getUpdates, sendMessage, answerCallbackQuery, clearInlineKeyboard } = require("./telegram");
 const { publishPost } = require("./postToLinkedIn");
 const { generateDiscoveryDraft, generateCustomDraft } = require("./generateAndSend");
+const { getImageUrl } = require("./generateImage");
 
 const PENDING_PATH = path.join(__dirname, "..", "pending.json");
 
@@ -98,10 +99,13 @@ async function main() {
     if (decision === "approve") {
       await sendMessage(botToken, chatId, "Got your approval ✅ - publishing to LinkedIn now...");
       try {
+        // Rebuilt fresh here rather than read from pending.json - the key must
+        // never be persisted to a file the bot commits to the (public) repo.
+        const imageUrl = pending.imagePrompt ? getImageUrl(pending.imagePrompt, pollinationsKey) : null;
         const id = await publishPost({
           accessToken: linkedinToken,
           text: pending.postText,
-          imageUrl: pending.imageUrl,
+          imageUrl,
         });
         console.log(`Published. Post id: ${id}`);
 
@@ -117,7 +121,7 @@ async function main() {
           sourceUrl: null,
           sourceObjectId: null,
           postText: null,
-          imageUrl: null,
+          imagePrompt: null,
           draftMessageId: null,
         });
         savePending(pending);
