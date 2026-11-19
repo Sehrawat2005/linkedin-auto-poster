@@ -30,7 +30,7 @@ async function generateDiscoveryDraft({ groqKey, botToken, chatId, pending }) {
     `Discovered topic: "${result.topic}"${result.sourceTitle ? ` (from: ${result.sourceTitle})` : " (self-proposed)"}`
   );
 
-  await sendDraftForReview({ ...result, source: "discovery", botToken, chatId, pending });
+  await sendDraftForReview({ ...result, source: "discovery", botToken, chatId, pending, groqKey });
   recordHistory({ topic: result.topic, sourceObjectId: result.sourceObjectId });
 }
 
@@ -50,6 +50,7 @@ async function generateCustomDraft({ topic, groqKey, botToken, chatId, pending }
     botToken,
     chatId,
     pending,
+    groqKey,
   });
 
   recordHistory({ topic, sourceObjectId: null });

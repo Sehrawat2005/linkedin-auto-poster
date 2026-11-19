@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { getImageUrl } = require("./generateImage");
+const { getImageUrl, generateScenePrompt } = require("./generateImage");
 const { sendMessage, sendPhoto } = require("./telegram");
 
 const PENDING_PATH = path.join(__dirname, "..", "pending.json");
@@ -47,9 +47,21 @@ async function sendDraftForReview({
   botToken,
   chatId,
   pending,
+  groqKey,
 }) {
-  const imageUrl = getImageUrl(topic);
   postText = sanitizePostText(postText);
+
+  // The raw topic phrase is too abstract for the image model on its own (it
+  // tends to free-associate on one word and produce something unrelated) -
+  // ask Groq for a concrete scene grounded in the actual post first. Non-fatal:
+  // fall back to the old topic-based prompt if this call fails for any reason.
+  let imageSubject = topic;
+  try {
+    imageSubject = await generateScenePrompt(postText, topic, groqKey);
+  } catch (err) {
+    console.warn(`Scene prompt generation failed, falling back to topic (non-fatal): ${err.message}`);
+  }
+  const imageUrl = getImageUrl(imageSubject);
 
   const sentMessage = await sendMessage(
     botToken,
