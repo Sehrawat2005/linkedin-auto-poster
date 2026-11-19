@@ -10,7 +10,8 @@
     "50456740",
     "50508016",
     "50533270",
-    "50519524"
+    "50519524",
+    "50503655"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -23,6 +24,7 @@
     "AI‑generated AWS emulator reshapes developer workflow",
     "Serverless ClickHouse on AWS Fargate for cost‑effective analytics",
     "Open‑source LLM inference on AWS Trainium with TrnRT",
-    "Serverless peer‑to‑peer multiplayer using Trystero"
+    "Serverless peer‑to‑peer multiplayer using Trystero",
+    "PowerQueue: free multi‑cloud message queue and its practical implications"
   ]
 }
