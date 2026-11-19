@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
+  "status": "idle",
   "telegramOffset": 249590269,
-  "topic": "AI-augmented workflow of a Microsoft principal software engineering manager",
-  "category": "software engineering",
-  "source": "discovery",
-  "sourceTitle": "How Microsoft's Principal Software Engineering Manager Works and Uses AI",
-  "sourceUrl": "https://newsletter.eng-leadership.com/p/how-microsofts-principal-software",
-  "sourceObjectId": "50483466",
-  "postText": "Ever wonder how top engineers squeeze AI into their day?\n\n- I peeked at the manager's day and saw AI copilots drafting design docs while he skims the output. He treats the model as a first-pass writer, not a final authority. The drafts are then reviewed in a quick stand-up, letting the team focus on architecture instead of boilerplate.\n\n- For code reviews he runs an LLM that flags risky patterns and suggests alternatives. In his team that cut the average review cycle from 48 hours to 36 hours, a 25% speed-up. He also uses the model to auto-generate unit test skeletons, filling another gap in the review pipeline.\n\n- He also feeds telemetry into a small GPT-style model that spots performance regressions before they hit production. The early alerts have prevented three major incidents this quarter. Because the model runs on a private endpoint, data never leaves the corporate network, addressing compliance worries.\n\n- The key is discipline: he always cross-checks AI output, annotates false positives, and trains his engineers to question suggestions. The result is higher confidence without over-relying on the tool. When the AI slips, the team treats it as a learning case, updating prompts to avoid repeat mistakes.\n\n- He set up an internal AI-usage guide and a shared prompt library, so new hires can instantly apply the same patterns. Since rollout, onboarding time for senior engineers has dropped by roughly two weeks. The guide even includes a checklist to audit model outputs for bias, which has become a routine part of sprint retrospectives.\n\nWhat AI habits have you adopted to keep pace in fast-moving teams?\n\n#softwareengineering\n#ai\n#devops\n#microsoft\n#productivity",
-  "imageUrl": "https://image.pollinations.ai/prompt/flat%202D%20vector%20illustration%2C%20A%20sleek%20glass%20conference%20table%2C%20where%20luminous%20holographic%20design%20docs%20cascade%20from%20a%20floating%20AI%20orb%20while%20a%20manager%20gestures%2C%20blue%20code%20snippets%20swirling%20around.%2C%20solid%20flat%20colors%20only%2C%20no%20gradients%2C%20no%20shadows%2C%20no%20depth%20of%20field%2C%20no%203D%20rendering%2C%20no%20photorealism%2C%20simple%20geometric%20shapes%2C%20clean%20outlines%2C%20dribbble%20style%20tech%20illustration%2C%20bold%20colors%20on%20plain%20background%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark?width=1024&height=1024&nologo=true",
-  "draftMessageId": 73
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imageUrl": null,
+  "draftMessageId": null
 }
