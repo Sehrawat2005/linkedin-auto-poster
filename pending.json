@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590269,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imageUrl": null,
-  "draftMessageId": null
+  "topic": "AI agents testing website security – insights from a live demo",
+  "category": "web security",
+  "source": "discovery",
+  "sourceTitle": "Show HN: Can an AI Agent Bypass Your Website Security?",
+  "sourceUrl": "https://assess.poh.org/",
+  "sourceObjectId": "50548480",
+  "postText": "Your website might already be vulnerable to AI agents.\n\n- I ran the open-source AI agent from the Show HN demo against a standard Django app that had all OWASP-recommended security headers. In under five minutes it uncovered a hidden /admin/debug route that wasn’t exposed in the sitemap, and it did so without any prior knowledge of the codebase.\n\n- The agent combined LLM-driven prompt engineering with adaptive crawling, so it changed its request cadence, payloads, and even randomized the User-Agent string on the fly, easily slipping past our static rate-limit rules.\n\n- In a 10-minute test it generated three times more request variations than a traditional scanner and managed to retrieve a CSRF token that the scanner missed. The token was later used to forge a POST request, showing the real risk.\n\n- What this tells me: static headers and basic throttling aren’t enough. We need behavioural analytics, JavaScript fingerprinting, and sanity checks on LLM-style inputs, plus monitoring for rate-limit anomalies and impossible navigation paths.\n\n- I added a lightweight visual-puzzle captcha that required a human-like drag-and-drop. The puzzle used a 3-second timeout, which is short enough for humans but kills the LLM loop, and the AI stalled after a few attempts, buying us valuable time to detect and block the session.\n\nHave you seen AI agents test your defenses, and what mitigations worked for you?\n\n#websecurity\n#ai\n#infosec\n#cloudcomputing\n#softwaredevelopment",
+  "imageUrl": "https://image.pollinations.ai/prompt/modern%20flat%20vector%20illustration%2C%20A%20metallic%20spider%E2%80%91like%20AI%20drone%20leaps%20from%20a%20glowing%20code%20tunnel%20onto%20a%20hidden%20%2Fadmin%2Fdebug%20door%2C%20neon%20light%20spilling%20into%20a%20dark%20server%20room.%2C%20bold%20flat%20colors%2C%20clean%20geometric%20shapes%2C%20minimalist%2C%20striking%20composition%2C%20modern%20editorial%2Ftech-blog%20illustration%20style%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20photorealistic%20detail%2C%20no%20photo%20texture?width=1024&height=1024&nologo=true",
+  "draftMessageId": 69
 }
