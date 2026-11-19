@@ -89,7 +89,7 @@ The "post" value must follow this structure:
 - Body: 3-5 points, each its own short paragraph (1-2 sentences, short lines), each starting with a plain hyphen "-" (ASCII character, not an arrow or bullet symbol).
 - Blank line between every paragraph - lots of white space, nothing longer than 2 sentences in a row.
 - Closing line: one short line with a clear takeaway or a genuine question to invite comments.
-- Blank line, then 2-3 relevant lowercase hashtags on their own line.
+- Blank line, then 5-6 relevant lowercase hashtags on their own line.
 - Sound like a real person who knows this space, not a corporate press release. First person where natural, conversational, no buzzwords like "synergy", "leverage", "unlock", "game-changer".
 - 180-280 words total, excluding hashtags. Use the extra room for a real example, a concrete number, or a bit more depth on each point - don't just pad with filler.
 - Plain text only - no markdown asterisks or headers, since LinkedIn displays them as literal characters, not formatting.`;
