@@ -16,7 +16,8 @@
     "50545800",
     "50548480",
     "50548428",
-    "50483466"
+    "50483466",
+    "50496487"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -35,6 +36,7 @@
     "Testing Terraform locally with an AWS emulator",
     "AI agents testing website security – insights from a live demo",
     "Security risks of granting AI agents OS-level access",
-    "AI-augmented workflow of a Microsoft principal software engineering manager"
+    "AI-augmented workflow of a Microsoft principal software engineering manager",
+    "Hardware‑enforced isolation for EKS pods with AWS Nitro Sandboxes"
   ]
 }

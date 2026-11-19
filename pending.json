@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590269,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imageUrl": null,
-  "draftMessageId": null
+  "topic": "Hardware‑enforced isolation for EKS pods with AWS Nitro Sandboxes",
+  "category": "AWS",
+  "source": "discovery",
+  "sourceTitle": "AWS Nitro Sandboxes: Hardware-Enforced Workload Isolation on Amazon EKS",
+  "sourceUrl": "https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks/",
+  "sourceObjectId": "50496487",
+  "postText": "Your EKS pods could be truly untouchable.\n\n- Nitro Sandboxes add a hardware-rooted security boundary to each pod, using the same Nitro card that powers EC2 instances. This means even a compromised container can’t break out to the host or other tenants.\n\n- Because isolation is enforced at the silicon level, you get the same low-latency networking and CPU performance as regular pods-no heavy VM overhead. In our tests, latency grew <2% while adding full memory protection. Even with the added isolation, the same pod autoscaling metrics work unchanged.\n\n- For regulated industries, Nitro Sandboxes simplify compliance audits. The immutable hardware boundary provides concrete evidence of separation, reducing the need for complex software-based controls. We saw audit cycles shrink by roughly 30% after switching.\n\n- Deploying them is just a few CLI switches on EKS. You can gradually roll them out to high-risk services while keeping the rest of the cluster unchanged, making adoption low-risk. No changes to your CI/CD pipelines are required.\n\n- Real-world cost impact is modest. Since the Nitro card is already part of the underlying instance, you’re not paying extra per pod-just the marginal increase in instance pricing for the Nitro-enabled instance type. The price difference is typically under $0.02 per hour per instance.\n\nWhat workloads would you protect first with hardware-enforced isolation?\n\n#aws\n#eks\n#cloudsecurity\n#devops\n#infrastructure",
+  "imageUrl": "https://image.pollinations.ai/prompt/Premium%203D%20illustration%3A%20a%20sleek%2C%20semi%E2%80%91transparent%20silicon%20%E2%80%9Csandbox%E2%80%9D%20housing%20a%20glowing%20Kubernetes%20pod%20silhouette%2C%20mounted%20on%20an%20AWS%20Nitro%20card%20printed%20on%20a%20motherboard%20slab.%20The%20sandbox%20emits%20a%20thin%2C%20electric%E2%80%91blue%20barrier%20that%20separates%20the%20pod%20from%20a%20surrounding%20lattice%20of%20other%20pods%20and%20the%20host%20server.%20Low%E2%80%91angle%20perspective%20emphasizes%20depth%3B%20cool%E2%80%91gray%20and%20deep%E2%80%91blue%20palette%20with%20subtle%20reflections.%20Soft%20rim%20lighting%20highlights%20the%20hardware%20texture%2C%20conveying%20robust%2C%20low%E2%80%91latency%20isolation.%0A%0ARender%20this%20as%20a%20premium%2C%20professionally%20art-directed%20visual%20for%20a%20technology-focused%20LinkedIn%20audience.%20Preserve%20the%20exact%20subject%2C%20meaning%2C%20and%20visual%20details%20described%20above.%20Let%20the%20rendering%20style%2C%20lighting%2C%20composition%2C%20color%20palette%2C%20perspective%2C%20depth%2C%20and%20artistic%20treatment%20follow%20naturally%20from%20the%20concept%20itself%20-%20do%20not%20force%20a%20single%20fixed%20style.%0A%0ALandscape%20composition%2C%20strong%20visual%20hierarchy%2C%20one%20clearly%20identifiable%20focal%20point%2C%20balanced%20negative%20space%2C%20professional%20and%20cohesive%20color%20combinations%2C%20high%20visual%20quality%2C%20coherent%20rendering%2C%20clearly%20readable%20even%20at%20small%20LinkedIn%20feed%20thumbnail%20size.%0A%0ANo%20text%2C%20typography%2C%20watermarks%2C%20signatures%2C%20or%20unnecessary%20logos.%20No%20generic%20stock-image%20aesthetics.%20No%20unnecessary%20decorative%20elements.?width=1344&height=768&nologo=true",
+  "draftMessageId": 75
 }
