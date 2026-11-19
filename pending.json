@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590269,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imageUrl": null,
-  "draftMessageId": null
+  "topic": "MotherDuck now on Azure – what multi‑cloud data lake means for devs",
+  "category": "cloud computing",
+  "source": "discovery",
+  "sourceTitle": "MotherDuck launches on Azure after DuckLabs joins AWS",
+  "sourceUrl": "https://motherduck.com/blog/motherduck-is-now-on-microsoft-azure/",
+  "sourceObjectId": "50549939",
+  "postText": "Your data lake shouldn't be stuck on one cloud.\n\n- MotherDuck just landed on Azure, joining its existing AWS footprint. For anyone using DuckDB, this means you can query massive Parquet files wherever they live without rewriting SQL.\n\n- Multi-cloud availability cuts the lock-in pain. You can spin up a cheap Azure VM, point it at Blob storage, and run the same analytical workloads you had on AWS S3, saving up to 30% on compute during off-peak seasons.\n\n- The real win is operational simplicity. DuckDB runs as a library, so you embed it in your Python or R scripts, and the underlying storage becomes the only variable. No need to learn a new service API when you switch clouds.\n\n- Watch out for data egress costs. Moving data between S3 and Azure Blob can quickly erase savings, so keep your source data in the cloud where you run the query, or use Azure Data Factory to replicate only needed partitions.\n\n- Start small: spin up an Azure B2s instance, install DuckDB, point it at a public dataset in Azure Blob, and compare query latency to your AWS setup. The hands-on numbers will tell you if the extra flexibility is worth it.\n\nWhat cloud mix are you experimenting with for analytics?\n\n#cloudcomputing\n#multicloud\n#dataengineering",
+  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%2C%20Wooden%20desk%20with%20laptop%20displaying%20code%2C%20two%20translucent%20clouds%E2%80%94azure%20blue%20and%20amber%E2%80%94hover%20above%2C%20linked%20by%20a%20shimmering%20golden%20duck-shaped%20data%20lake.%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
+  "draftMessageId": 65
 }
