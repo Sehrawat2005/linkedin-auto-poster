@@ -44,6 +44,7 @@ function savePending(pending) {
 
 async function main() {
   const groqKey = process.env.GROQ_API_KEY;
+  const pollinationsKey = process.env.POLLINATIONS_API_KEY;
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = String(process.env.TELEGRAM_CHAT_ID);
   const linkedinToken = process.env.LINKEDIN_ACCESS_TOKEN;
@@ -134,9 +135,9 @@ async function main() {
       await sendMessage(botToken, chatId, "Got your rejection ❌ - generating a new draft...");
       try {
         if (pending.source === "custom") {
-          await generateCustomDraft({ topic: pending.topic, groqKey, botToken, chatId, pending });
+          await generateCustomDraft({ topic: pending.topic, groqKey, pollinationsKey, botToken, chatId, pending });
         } else {
-          await generateDiscoveryDraft({ groqKey, botToken, chatId, pending });
+          await generateDiscoveryDraft({ groqKey, pollinationsKey, botToken, chatId, pending });
         }
       } catch (err) {
         console.error(`Regeneration failed: ${err.message}`);
@@ -151,7 +152,7 @@ async function main() {
     console.log(`Custom topic requested: "${customTopic}"`);
     await sendMessage(botToken, chatId, "Got it, researching and drafting a post on that...");
     try {
-      await generateCustomDraft({ topic: customTopic, groqKey, botToken, chatId, pending });
+      await generateCustomDraft({ topic: customTopic, groqKey, pollinationsKey, botToken, chatId, pending });
     } catch (err) {
       console.error(`Custom draft generation failed: ${err.message}`);
       await sendMessage(botToken, chatId, `⚠️ Couldn't generate a draft: ${err.message}\n\nSend the topic again to retry.`);

@@ -21,7 +21,7 @@ function recordHistory({ topic, sourceObjectId }) {
   fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2) + "\n");
 }
 
-async function generateDiscoveryDraft({ groqKey, botToken, chatId, pending }) {
+async function generateDiscoveryDraft({ groqKey, pollinationsKey, botToken, chatId, pending }) {
   const history = loadHistory();
   const candidates = await discoverCandidates(history.usedObjectIds || []);
   const result = await generateDiscoveredPost({ candidates, usedTopics: history.usedTopics || [], groqKey });
@@ -30,11 +30,11 @@ async function generateDiscoveryDraft({ groqKey, botToken, chatId, pending }) {
     `Discovered topic: "${result.topic}"${result.sourceTitle ? ` (from: ${result.sourceTitle})` : " (self-proposed)"}`
   );
 
-  await sendDraftForReview({ ...result, source: "discovery", botToken, chatId, pending, groqKey });
+  await sendDraftForReview({ ...result, source: "discovery", botToken, chatId, pending, groqKey, pollinationsKey });
   recordHistory({ topic: result.topic, sourceObjectId: result.sourceObjectId });
 }
 
-async function generateCustomDraft({ topic, groqKey, botToken, chatId, pending }) {
+async function generateCustomDraft({ topic, groqKey, pollinationsKey, botToken, chatId, pending }) {
   console.log(`Generating post for custom topic: "${topic}"`);
   const headlines = await getTrendingContext(topic);
   const postText = await generatePost(topic, groqKey, headlines);
@@ -51,6 +51,7 @@ async function generateCustomDraft({ topic, groqKey, botToken, chatId, pending }
     chatId,
     pending,
     groqKey,
+    pollinationsKey,
   });
 
   recordHistory({ topic, sourceObjectId: null });
@@ -58,6 +59,7 @@ async function generateCustomDraft({ topic, groqKey, botToken, chatId, pending }
 
 async function main() {
   const groqKey = process.env.GROQ_API_KEY;
+  const pollinationsKey = process.env.POLLINATIONS_API_KEY;
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -71,7 +73,7 @@ async function main() {
     return;
   }
 
-  await generateDiscoveryDraft({ groqKey, botToken, chatId, pending });
+  await generateDiscoveryDraft({ groqKey, pollinationsKey, botToken, chatId, pending });
 }
 
 if (require.main === module) {
