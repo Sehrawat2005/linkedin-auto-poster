@@ -5,10 +5,8 @@ const { sendMessage, sendPhoto } = require("./telegram");
 
 const PENDING_PATH = path.join(__dirname, "..", "pending.json");
 
-// Images disabled for now (Pollinations quality/relevance wasn't good enough) -
-// posting text-only until a better image API is wired in. Flip this back on
-// (and the block below) once that's in place; generateImage.js is untouched.
-const IMAGES_ENABLED = false;
+// Re-enabled now that generateImage.js uses the creative-director prompt system.
+const IMAGES_ENABLED = true;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
