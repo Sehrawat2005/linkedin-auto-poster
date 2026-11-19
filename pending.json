@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590268,
-  "topic": "PowerQueue: free multi‑cloud message queue and its practical implications",
-  "category": "cloud computing",
-  "source": "discovery",
-  "sourceTitle": "Show HN: PowerQueue free online message queue supports AWS, GCE, Azure, AMQP",
-  "sourceUrl": "https://www.powerqueue.link",
-  "sourceObjectId": "50503655",
-  "postText": "Free message queue that works everywhere - finally!\n\n- PowerQueue offers a hosted, zero-cost queue that speaks AMQP and runs on AWS, GCE, Azure. I tried it for a microservice demo and it hooked up in minutes without provisioning any broker.\n\n- Multi-cloud support means you can move workloads between providers without changing code. The queue endpoint is just a URL; the SDK abstracts the underlying provider.\n\n- Because it’s free, you need to be mindful of limits: 10 k messages per day, 256 KB payload max, and no SLA. For low-traffic APIs or dev pipelines it’s perfect, but production traffic should still consider a managed service.\n\n- The open-source client library adds built-in retries and exponential back-off, which saved me from occasional hiccups when a region experienced latency spikes. It also logs metrics to CloudWatch, GCP Monitoring, or Azure Monitor with a single config flag.\n\n- From a digital-marketing angle, quick event ingestion lets you capture click-stream data for A/B tests without waiting for a full-scale data pipeline. You can spin up a test queue, feed events, and visualize results in minutes.\n\nHave you tried a free multi-cloud queue, and how did it fit your workflow?\n\n#cloudcomputing\n#aws\n#messaging",
-  "imageUrl": "https://image.pollinations.ai/prompt/professional%20realistic%20photo%20related%20to%3A%20PowerQueue%3A%20free%20multi%E2%80%91cloud%20message%20queue%20and%20its%20practical%20implications%2C%20clean%20composition%2C%20high%20quality%2C%20no%20text%2C%20no%20watermark%2C%20no%20cartoon%20characters%2C%20no%20illustrations?width=1024&height=1024&nologo=true",
-  "draftMessageId": 60
+  "status": "idle",
+  "telegramOffset": 249590269,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imageUrl": null,
+  "draftMessageId": null
 }
