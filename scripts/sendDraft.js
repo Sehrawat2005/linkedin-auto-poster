@@ -23,14 +23,18 @@ function sanitizePostText(text) {
     .replace(/[‑–—]/g, "-"); // non-breaking hyphen / en/em dash -> plain hyphen
 }
 
+// Pollinations occasionally rate-limits (503/400 "failed to get HTTP URL
+// content") under load and needs more than a couple quick retries to recover -
+// observed needing up to 4 attempts with ~10-15s gaps in practice.
 async function trySendPhoto(botToken, chatId, imageUrl) {
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  const delays = [5000, 10000, 15000];
+  for (let attempt = 1; attempt <= 4; attempt++) {
     try {
       await sendPhoto(botToken, chatId, imageUrl);
       return true;
     } catch (err) {
       console.warn(`sendPhoto attempt ${attempt} failed: ${err.message}`);
-      if (attempt < 2) await sleep(3000);
+      if (attempt < 4) await sleep(delays[attempt - 1]);
     }
   }
   return false;
