@@ -1,7 +1,7 @@
 const GROQ_MODEL = "openai/gpt-oss-120b";
 
 function buildImagePrompt(sceneDescription) {
-  return `modern flat vector illustration, ${sceneDescription}, bold flat colors, clean geometric shapes, minimalist, striking composition, modern editorial/tech-blog illustration style, high quality, no text, no watermark, no photorealistic detail, no photo texture`;
+  return `flat 2D vector illustration, ${sceneDescription}, solid flat colors only, no gradients, no shadows, no depth of field, no 3D rendering, no photorealism, simple geometric shapes, clean outlines, dribbble style tech illustration, bold colors on plain background, high quality, no text, no watermark`;
 }
 
 function getImageUrl(sceneDescription) {
