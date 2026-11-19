@@ -1,7 +1,7 @@
 const GROQ_MODEL = "openai/gpt-oss-120b";
 
 function buildImagePrompt(sceneDescription) {
-  return `professional realistic photo, ${sceneDescription}, dramatic lighting, bold color contrast, dynamic angle, striking composition, sharp focus, high detail, eye-catching, high quality, no text, no watermark, no cartoon characters, no illustrations`;
+  return `modern flat vector illustration, ${sceneDescription}, bold flat colors, clean geometric shapes, minimalist, striking composition, modern editorial/tech-blog illustration style, high quality, no text, no watermark, no photorealistic detail, no photo texture`;
 }
 
 function getImageUrl(sceneDescription) {
@@ -15,7 +15,7 @@ function getImageUrl(sceneDescription) {
 // image. Ask the model for one concrete, physical scene instead, grounded in
 // the actual post content, before handing it to the image generator.
 async function generateScenePrompt(postText, topic, groqKey) {
-  const prompt = `Based on this LinkedIn post, write ONE short, concrete, visually striking scene description (under 25 words) that a photo-generation AI could turn into an eye-catching, scroll-stopping image - a real physical scene, object, or visual metaphor, not an abstract concept. Make it dynamic and specific: an interesting angle, a sense of motion or tension, a bold visual contrast (e.g. light vs dark, scale, color) - not a plain, static "object sitting on a desk" shot. No text, logos, or recognizable faces. Output ONLY the scene description, nothing else - no preamble, no quotes.
+  const prompt = `Based on this LinkedIn post, write ONE short, concrete, visually striking scene description (under 25 words) that an image-generation AI could turn into an eye-catching, scroll-stopping flat-illustration graphic - a real physical scene, object, or visual metaphor, not an abstract concept. Make it dynamic and specific: an interesting angle or layout, a sense of motion or tension, a bold visual contrast (e.g. scale, color, light vs dark) - not a plain, static "object sitting on a desk" shot. No text, logos, or recognizable faces. Output ONLY the scene description, nothing else - no preamble, no quotes.
 
 Topic: ${topic}
 
