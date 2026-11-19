@@ -18,7 +18,8 @@
     "50548428",
     "50483466",
     "50496487",
-    "50516074"
+    "50516074",
+    "50555002"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -39,6 +40,7 @@
     "Security risks of granting AI agents OS-level access",
     "AI-augmented workflow of a Microsoft principal software engineering manager",
     "Hardware‑enforced isolation for EKS pods with AWS Nitro Sandboxes",
-    "Why the “boring” future of software engineering matters"
+    "Why the “boring” future of software engineering matters",
+    "Transitioning from web development to embedded/firmware engineering"
   ]
 }
