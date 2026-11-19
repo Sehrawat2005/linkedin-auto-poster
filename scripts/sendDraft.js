@@ -5,6 +5,11 @@ const { sendMessage, sendPhoto } = require("./telegram");
 
 const PENDING_PATH = path.join(__dirname, "..", "pending.json");
 
+// Images disabled for now (Pollinations quality/relevance wasn't good enough) -
+// posting text-only until a better image API is wired in. Flip this back on
+// (and the block below) once that's in place; generateImage.js is untouched.
+const IMAGES_ENABLED = false;
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -55,17 +60,20 @@ async function sendDraftForReview({
 }) {
   postText = sanitizePostText(postText);
 
-  // The raw topic phrase is too abstract for the image model on its own (it
-  // tends to free-associate on one word and produce something unrelated) -
-  // ask Groq for a concrete scene grounded in the actual post first. Non-fatal:
-  // fall back to the old topic-based prompt if this call fails for any reason.
-  let imageSubject = topic;
-  try {
-    imageSubject = await generateScenePrompt(postText, topic, groqKey);
-  } catch (err) {
-    console.warn(`Scene prompt generation failed, falling back to topic (non-fatal): ${err.message}`);
+  let imageUrl = null;
+  if (IMAGES_ENABLED) {
+    // The raw topic phrase is too abstract for the image model on its own (it
+    // tends to free-associate on one word and produce something unrelated) -
+    // ask Groq for a concrete scene grounded in the actual post first. Non-fatal:
+    // fall back to the old topic-based prompt if this call fails for any reason.
+    let imageSubject = topic;
+    try {
+      imageSubject = await generateScenePrompt(postText, topic, groqKey);
+    } catch (err) {
+      console.warn(`Scene prompt generation failed, falling back to topic (non-fatal): ${err.message}`);
+    }
+    imageUrl = getImageUrl(imageSubject);
   }
-  const imageUrl = getImageUrl(imageSubject);
 
   const sentMessage = await sendMessage(
     botToken,
@@ -99,15 +107,17 @@ async function sendDraftForReview({
   pending.telegramOffset = pending.telegramOffset ?? 0;
   fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
 
-  const photoSent = await trySendPhoto(botToken, chatId, imageUrl);
-  if (!photoSent) {
-    console.warn("Image failed to send after retries - continuing text-only, LinkedIn publish will skip the image too.");
-    pending.imageUrl = null;
-    fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
-    try {
-      await sendMessage(botToken, chatId, "(Couldn't generate a preview image this time - this will publish as text-only.)");
-    } catch (err) {
-      console.warn(`Could not send the image-failure notice (non-fatal): ${err.message}`);
+  if (IMAGES_ENABLED) {
+    const photoSent = await trySendPhoto(botToken, chatId, imageUrl);
+    if (!photoSent) {
+      console.warn("Image failed to send after retries - continuing text-only, LinkedIn publish will skip the image too.");
+      pending.imageUrl = null;
+      fs.writeFileSync(PENDING_PATH, JSON.stringify(pending, null, 2) + "\n");
+      try {
+        await sendMessage(botToken, chatId, "(Couldn't generate a preview image this time - this will publish as text-only.)");
+      } catch (err) {
+        console.warn(`Could not send the image-failure notice (non-fatal): ${err.message}`);
+      }
     }
   }
 
