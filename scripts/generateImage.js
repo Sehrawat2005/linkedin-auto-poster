@@ -14,9 +14,23 @@ Avoid generic AI-illustration aesthetics: no translucent boxes, no random glowin
 
 // Landscape 16:9 per the art-direction brief above - also reads better in the
 // LinkedIn feed than the old 1:1 crop.
-function getImageUrl(visualConcept) {
+//
+// Uses Pollinations' newer gen.pollinations.ai endpoint with model=flux
+// (FLUX.1 Schnell) instead of the legacy image.pollinations.ai/prompt
+// endpoint, which silently ignores any requested model and always serves
+// "sana" (a lightweight model unsuited for detailed, multi-element scenes -
+// confirmed via direct testing) regardless of what's passed. flux.1-schnell
+// is a free model on the new endpoint (verified against Pollinations' live
+// /image/models catalog), but anonymous/keyless access to it is tightly
+// rate-limited, so a free Pollinations API key is required for reliable use.
+// The key is passed as a query param (`?key=`), which Pollinations documents
+// specifically for GET image endpoints that can't set custom headers - this
+// is required here since Telegram's servers fetch this URL directly on our
+// behalf, so we can't attach an Authorization header to that request.
+function getImageUrl(visualConcept, pollinationsKey) {
   const encoded = encodeURIComponent(buildImagePrompt(visualConcept));
-  return `https://image.pollinations.ai/prompt/${encoded}?width=1344&height=768&nologo=true`;
+  const keyParam = pollinationsKey ? `&key=${encodeURIComponent(pollinationsKey)}` : "";
+  return `https://gen.pollinations.ai/image/${encoded}?model=flux&width=1344&height=768${keyParam}`;
 }
 
 // A short topic phrase like "Hidden Lambda billing for idle memory" is too

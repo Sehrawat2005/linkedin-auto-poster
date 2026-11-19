@@ -55,6 +55,7 @@ async function sendDraftForReview({
   chatId,
   pending,
   groqKey,
+  pollinationsKey,
 }) {
   postText = sanitizePostText(postText);
 
@@ -70,7 +71,7 @@ async function sendDraftForReview({
     } catch (err) {
       console.warn(`Scene prompt generation failed, falling back to topic (non-fatal): ${err.message}`);
     }
-    imageUrl = getImageUrl(imageSubject);
+    imageUrl = getImageUrl(imageSubject, pollinationsKey);
   }
 
   const sentMessage = await sendMessage(
