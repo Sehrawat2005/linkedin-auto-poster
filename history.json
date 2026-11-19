@@ -15,7 +15,8 @@
     "50549939",
     "50545800",
     "50548480",
-    "50548428"
+    "50548428",
+    "50483466"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -33,6 +34,7 @@
     "MotherDuck now on Azure – what multi‑cloud data lake means for devs",
     "Testing Terraform locally with an AWS emulator",
     "AI agents testing website security – insights from a live demo",
-    "Security risks of granting AI agents OS-level access"
+    "Security risks of granting AI agents OS-level access",
+    "AI-augmented workflow of a Microsoft principal software engineering manager"
   ]
 }
