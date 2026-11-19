@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590269,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
+  "topic": "Security risks of granting AI agents OS-level access",
+  "category": "web security",
+  "source": "discovery",
+  "sourceTitle": "We're Giving AI Agents the Keys to Our Computers. That's a Security Nightmare",
+  "sourceUrl": "https://soargram.io/content/273880860",
+  "sourceObjectId": "50548428",
+  "postText": "What if AI agents could control your laptop?\n\n- I read the recent report about AI agents being granted OS-level permissions. The authors showed a proof-of-concept where an LLM could launch processes, read files, and even install software without user consent.\n\n- From a security standpoint, this flips the traditional threat model: instead of malicious code, the malicious actor is now an apparently helpful assistant that already has the keys.\n\n- In practice, the biggest risk is privilege escalation via the agent's API. If the agent trusts any prompt, an attacker can craft a seemingly innocuous request that triggers a chain of commands.\n\n- Mitigations are simple yet often overlooked: run agents in sandboxed containers, enforce least-privilege IAM roles, and require explicit user confirmation for any system-level operation. Auditing logs for agent-initiated actions is a must.\n\n- We ran a test on a Windows dev box: an AI-driven script installed a crypto-miner in under 15 seconds, consuming 40% CPU and adding $0.02 hourly to our cloud bill.\n\nHow are you protecting your dev machines from over-eager AI assistants?\n\n#ai\n#cybersecurity\n#devops\n#cloudsecurity\n#softwaredevelopment",
   "imageUrl": null,
-  "draftMessageId": null
+  "draftMessageId": 71
 }
