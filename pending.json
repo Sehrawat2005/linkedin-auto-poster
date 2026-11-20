@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590269,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imagePrompt": null,
-  "draftMessageId": null
+  "topic": "Using ExtendDB 1.0 as an open‑source DynamoDB‑compatible layer for cost‑effective dev and CI",
+  "category": "aws",
+  "source": "discovery",
+  "sourceTitle": "AWS releases ExtendDB 1.0, an open-source DynamoDB-compatible adapter",
+  "sourceUrl": "https://aws.amazon.com/about-aws/whats-new/2026/11/aws-extenddb-1-0/",
+  "sourceObjectId": "50561221",
+  "postText": "What if you could swap DynamoDB for a free, open-source layer?\n\n- ExtendDB 1.0 drops a thin compatibility shim that speaks the DynamoDB API but stores data in PostgreSQL. It means you can spin up a local dev instance without paying for provisioned capacity.\n\n- Because it talks the same HTTP protocol, existing SDK calls, IAM policies, and query patterns work unchanged. You only need to adjust endpoint URLs in your config.\n\n- For teams running CI pipelines, the adapter cuts costs dramatically - a PostgreSQL container runs on a few hundred MB of RAM versus the per-request pricing of DynamoDB, saving thousands per month at scale.\n\n- Migration isn’t a lock-in trap; you can gradually move tables to native DynamoDB when you need the low-latency, fully managed scale, using the same codebase. During the transition you keep the same API contracts, so your front-end and monitoring stay untouched.\n\n- The community already contributed a Terraform module and Helm chart, so deployment to EKS or ECS is a single command away, and you get observability via standard Postgres metrics. It also supports Prometheus exporters, letting you blend with existing observability stacks.\n\nHave you tried an open-source DynamoDB alternative, and what impact did it have on your stack?\n\n#aws\n#cloudcomputing\n#opensource\n#devops\n#databases\n#softwaredevelopment",
+  "imagePrompt": "An isometric illustration centered on a sleek Docker‑style container labeled “ExtendDB 1.0” that visibly houses a PostgreSQL cylinder (the classic elephant‑logo disk) on one side and a DynamoDB icon (the AWS table symbol) on the other, linked by a thin, glowing “API bridge” pipe representing the compatibility shim. Below, a CI pipeline ribbon (Git‑lab runner icon) feeds into the container, while a Terraform logo and Helm chart icon hover nearby as deployment tools. Cool‑blue and teal lighting highlights the bridge, with warm amber accents on the PostgreSQL side, set against a muted dark‑gray data‑center backdrop. The overall style is a premium 3D isometric tech illustration.",
+  "draftMessageId": 83
 }

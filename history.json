@@ -20,7 +20,8 @@
     "50496487",
     "50516074",
     "50555002",
-    "50467297"
+    "50467297",
+    "50561221"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -43,6 +44,7 @@
     "Hardware‑enforced isolation for EKS pods with AWS Nitro Sandboxes",
     "Why the “boring” future of software engineering matters",
     "Transitioning from web development to embedded/firmware engineering",
-    "Evolving software engineering interview practices"
+    "Evolving software engineering interview practices",
+    "Using ExtendDB 1.0 as an open‑source DynamoDB‑compatible layer for cost‑effective dev and CI"
   ]
 }
