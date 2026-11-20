@@ -1,13 +1,13 @@
 {
-  "status": "idle",
-  "telegramOffset": 249590270,
-  "topic": null,
+  "status": "awaiting_review",
+  "telegramOffset": 249590271,
+  "topic": "Want to build your own home server with just a Android mobile",
   "category": null,
-  "source": null,
+  "source": "custom",
   "sourceTitle": null,
   "sourceUrl": null,
   "sourceObjectId": null,
-  "postText": null,
-  "imagePrompt": null,
-  "draftMessageId": null
+  "postText": "Turn your Android into a full-blown home server  \n\n- I've been running a lightweight NAS on my old Pixel for the past 3 months, and it's handling 200 GB of backups without a hitch. The phone's ARM CPU and 4 GB RAM are more than enough for file sync and occasional transcoding. I also set up cron jobs to prune old logs, keeping storage tidy.  \n\n- All you need is the phone, a USB-C OTG adapter, and a cheap SSD or HDD. I connected a 500 GB SSD via a powered hub; the power draw stayed under 5 W, so my home outlet never spikes. The SSD stays cool thanks to the phone’s built-in thermal management, no extra fans needed.  \n\n- The magic happens in Termux: install proot-distro, pull Debian, and you have a full Linux environment. Add OpenSSH and Samba, and you can SSH from any device or mount the share on Windows/macOS. Because it runs in user space, you never have to root the device, preserving warranty.  \n\n- Real-world use: I stream my movie collection to a Roku, host a personal Nextcloud instance, and even run a tiny Home Assistant hub-all from the same phone. The whole setup costs under $50 and runs on a single 5 V charger. I monitor uptime with a simple script that pings me if the service drops, and it’s never missed a beat.  \n\nWhat would you run on a server that fits in your pocket?  \n\n#homelab  \n#android  \n#servers  \n#opensource  \n#diytech  \n#cloud",
+  "imagePrompt": "A premium‑realistic 3D illustration of a Pixel‑style Android phone perched on a dark‑wood desk, its screen lit with a visible Termux terminal showing a Debian “root@android:~#” prompt. A USB‑C OTG cable snakes from the phone’s port into a compact, textured powered USB hub, which in turn connects to a sleek, silver 2.5‑inch SSD. Thin, glowing network lines extend from the phone to a minimalist laptop and a small TV screen in the background, hinting at SSH and media streaming. Warm, directional key lighting casts soft shadows; the palette mixes deep charcoal, brushed‑metal gray, teal accents on the cable, and orange glow from the terminal display. The composition is angled 30° from above, focusing on the phone‑hub‑SSD chain as the clear focal point.",
+  "draftMessageId": 90
 }
