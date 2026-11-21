@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590272,
-  "topic": "Love‑driven development (LDD) as a practical safety lens for AI models",
-  "category": "software development",
-  "source": "discovery",
-  "sourceTitle": "The only path to sustainable and safe AGI is LDD (Love-driven development)",
-  "sourceUrl": "https://news.ycombinator.com/item?id=50576291",
-  "sourceObjectId": "50576291",
-  "postText": "Can love really steer AI toward safety?\n\n- LDD proposes that development teams embed empathy and user-centric values into the AI training loop, not just performance metrics. It forces us to ask, 'Are we building tools that amplify well-being or just revenue?'\n\n- When engineers treat models as collaborators rather than tools, the feedback loop shifts, reducing blind-optimisation and surface-level hacks that often cause hidden biases. The result is a more transparent loss surface where trade-offs are visible early in the sprint.\n\n- I tried a small experiment: adding a 'user happiness' metric to a recommendation engine’s loss function. Within two weeks, click-through dropped 3% but negative feedback fell 40%, showing trade-offs can be quantified. The modest dip in CTR was acceptable because the net user sentiment improved dramatically.\n\n- Scaling LDD means rethinking code reviews, CI pipelines, and even version control tags to capture intent and ethical constraints, which aligns with the growing 'responsible AI' push in cloud services. Teams that adopted this approach reported fewer post-release hot-fixes related to bias, saving weeks of engineering effort.\n\n- On AWS, you can attach the happiness metric as a custom metric in a SageMaker training job, then set a CloudWatch alarm to block deployments that exceed a bias threshold - turning love-driven checks into enforceable guardrails. It also lets auditors trace ethical compliance the same way they track performance metrics.\n\nWhat’s one empathy-driven tweak you could add to your next project?\n\n#softwaredevelopment\n#aiethics\n#agiresearch\n#devculture\n#cloudcomputing",
-  "imagePrompt": "**Central message:** Embedding empathy‑driven “love” metrics into AI model training—e.g., a user‑happiness loss term tracked in SageMaker and enforced by CloudWatch alarms—creates concrete safety guardrails that reduce bias and improve user wellbeing.\n\n**Specific technology:** Amazon SageMaker custom training job with a “user happiness” metric, integrated into the loss function, and an AWS CloudWatch alarm that blocks deployments when the bias/happiness threshold is exceeded, forming part of the CI/CD pipeline.\n\n**Visual concept (50‑80 words):** An isometric, premium‑3D illustration of an AWS‑style server rack labeled “SageMaker” glowing softly. In front of the rack, a large transparent loss‑curve screen shows a heart‑shaped peak labeled “User Happiness”. Hovering above the rack, a CloudWatch alarm bell with a red stop‑sign glows red, its needle pointing at a threshold line on the curve. Around the scene, code‑review cards with empathy icons (heart stickers) rest on a sleek desk. Cool blues and steel grays dominate, with the heart and alarm in vivid crimson and warm pink for contrast.",
-  "draftMessageId": 95
+  "status": "idle",
+  "telegramOffset": 249590273,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imagePrompt": null,
+  "draftMessageId": null
 }
