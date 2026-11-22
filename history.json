@@ -22,7 +22,8 @@
     "50555002",
     "50467297",
     "50561221",
-    "50576291"
+    "50576291",
+    "50575612"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -48,6 +49,7 @@
     "Evolving software engineering interview practices",
     "Using ExtendDB 1.0 as an open‑source DynamoDB‑compatible layer for cost‑effective dev and CI",
     "Want to build your own home server with just a Android mobile",
-    "Love‑driven development (LDD) as a practical safety lens for AI models"
+    "Love‑driven development (LDD) as a practical safety lens for AI models",
+    "Applying the Bitter Lesson to modern cloud development"
   ]
 }
