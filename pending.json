@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590273,
-  "topic": "Applying the Bitter Lesson to modern cloud development",
-  "category": "software engineering",
-  "source": "discovery",
-  "sourceTitle": "The Bitter Lesson is Coming for Software Engineering",
-  "sourceUrl": "https://twitter.com/jacsebl/status/2122725653833244769",
-  "sourceObjectId": "50575612",
-  "postText": "What if the hardest lesson in software is already written?\n\n- The Bitter Lesson, coined by AI researcher Rich Sutton, reminds us that brute-force compute beats clever hand-tuned tricks. In cloud era, we can spin thousands of cheap instances, so many niche optimizations become unnecessary.\n\n- This forces teams to rethink “clever code” as a liability. Maintaining custom algorithms costs time, especially when AWS offers managed services that already encapsulate those optimizations (e.g., DynamoDB auto-scaling, SageMaker pipelines).\n\n- The upside is faster delivery. By leaning on serverless or container-as-a-service, we let the platform handle scaling, letting engineers focus on product logic and user experience instead of low-level performance hacks.\n\n- But the lesson isn’t an excuse to ignore fundamentals. Knowing where the platform’s abstractions fall short-latency spikes, cold starts-still matters. A measured approach combines cloud primitives with targeted profiling where ROI is clear.\n\n- Practically, I audit my codebase quarterly: identify any custom caching, manual sharding, or home-grown load balancers. If a managed AWS feature covers the same need within a 5-line config, I replace it. The result: 30% reduction in ops toil and a cleaner code repo.\n\nHave you spotted a “clever” piece of code that could be offloaded to a managed service?\n\n#softwareengineering\n#cloudcomputing\n#aws\n#devops\n#techlead\n#productivity",
-  "imagePrompt": "Isometric illustration (≈70 words):  \n\nA split‑scene viewed at a 30° isometric angle. On the right, a sleek “AWS Managed Services” zone – a stack of identical server‑rack units painted AWS orange, each tagged “Auto‑Scale”; hovering above them are recognizable service icons: a blue DynamoDB cylinder with a tiny auto‑scale arrow, a yellow Lambda bolt, and a teal SageMaker box with a pipeline arrow. Light, cool illumination highlights this zone.  \n\nOn the left, a rusty, hand‑crafted gear‑box assembly labeled “Custom Cache / Sharding / Load‑Balancer”, with tangled copper wiring and a small manual lever. A warm, amber spotlight draws attention to its complexity. Between the zones, a subtle gradient divides the scene, emphasizing the shift from bespoke hardware to cloud‑native primitives. No text or faces, only concrete AWS icons and a tangible gear mechanism.",
-  "draftMessageId": 100
+  "status": "idle",
+  "telegramOffset": 249590274,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imagePrompt": null,
+  "draftMessageId": null
 }
