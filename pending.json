@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590275,
-  "topic": "AWS outage that flew under the radar and resilience lessons",
-  "category": "aws",
-  "source": "discovery",
-  "sourceTitle": "AWS got hit by an outage too. You didn't hear about it",
-  "sourceUrl": "https://www.theregister.com/columnists/2026/11/21/aws-got-hit-by-an-outage-too-heres-why-you-didnt-hear-about-it/5311511",
-  "sourceObjectId": "50603730",
-  "postText": "Did you miss the quiet AWS outage last week?\n\n- I saw the AWS status page flash an unexpected Service Disruption in us-east-1 for about 12 minutes. The glitch didn’t trigger any major alerts because most monitoring tools treat brief blips as noise.\n\n- The real impact was on downstream services that rely on S3 ListObjects calls; my CI pipelines stalled, and a few customers reported delayed webhook deliveries. It reminded me that even “high-availability” services can have hidden latency spikes.\n\n- I dug into the CloudWatch logs and found that the root cause was a mis-routed internal DNS query that flooded the Route 53 resolver. The fix was a quick TTL-adjustment and a temporary routing rule, but the incident lasted longer than the UI suggested.\n\n- What does this mean for us? Build layered retries, use multi-region failover for critical APIs, and keep an eye on latency metrics, not just “up/down” statuses. A simple exponential back-off saved my deployment from a full rollback.\n\n- Finally, communicate transparently with stakeholders. A short status tweet from AWS kept me in the loop, but a proactive internal Slack alert would have reduced the scramble.\n\nHow are you hardening your AWS-dependent workflows against silent hiccups?\n\n#aws\n#cloudcomputing\n#devops\n#reliability\n#infrastructure",
-  "imagePrompt": "An isometric, premium‑3D illustration centered on an AWS Route 53 DNS resolver tower (a stylized globe with antennae) swarmed by a visible queue of glowing request packets that spill over its sides, indicating a mis‑routed flood. To the left, a realistic S3 bucket icon shows a delayed “ListObjects” arrow looping back to the DNS tower, while a nearby CI/CD server rack (small server units with a blinking “pipeline paused” light) displays a stalled build gauge. A thin, exponential‑back‑off curve of expanding concentric circles arcs from the DNS tower toward the CI server, symbolizing layered retries. The background features faint data‑center racks and a subtle CloudWatch log monitor screen displaying a brief red flash. Soft, directional lighting casts gentle shadows; palette uses AWS orange, teal, cool gray, and white accents for a clean, tech‑focused atmosphere.",
-  "draftMessageId": 109
+  "status": "idle",
+  "telegramOffset": 249590276,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imagePrompt": null,
+  "draftMessageId": null
 }
