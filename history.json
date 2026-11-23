@@ -24,7 +24,8 @@
     "50561221",
     "50576291",
     "50575612",
-    "50600516"
+    "50600516",
+    "50603730"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -52,6 +53,7 @@
     "Want to build your own home server with just a Android mobile",
     "Love‑driven development (LDD) as a practical safety lens for AI models",
     "Applying the Bitter Lesson to modern cloud development",
-    "RayClay: open‑source C framework for desktop, mobile, and web"
+    "RayClay: open‑source C framework for desktop, mobile, and web",
+    "AWS outage that flew under the radar and resilience lessons"
   ]
 }
