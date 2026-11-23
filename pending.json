@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590274,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imagePrompt": null,
-  "draftMessageId": null
+  "topic": "RayClay: open‑source C framework for desktop, mobile, and web",
+  "category": "web development",
+  "source": "discovery",
+  "sourceTitle": "Show HN: RayClay – an open source C app framework for desktop, mobile, and web",
+  "sourceUrl": "https://github.com/impizulu/rayclay",
+  "sourceObjectId": "50600516",
+  "postText": "C code can now run everywhere-desktop, mobile, and the web.\n\n- RayClay lets you write a single C codebase and compile it to native binaries for Windows, macOS, Linux, iOS, Android, and even WebAssembly for browsers. The project bundles a lightweight UI layer, so you don’t need separate toolkits per platform.\n\n- Because it compiles to WebAssembly, you get near-native performance in the browser without a JavaScript bridge. I tried the demo todo app and saw frame times under 10 ms, which is impressive for a UI-heavy workload.\n\n- The build system integrates with CMake and supports incremental builds, making CI pipelines straightforward. You can cache the compiled WebAssembly artifact alongside native binaries and ship a single artifact set to all your release channels.\n\n- Open-source licensing (MIT) means you can embed RayClay in commercial products without legal headaches. The community is already contributing platform-specific fixes, so the roadmap feels collaborative rather than a solo venture.\n\nHave you tried a C-first, truly cross-platform stack, and what challenges did you hit?\n\n#webdevelopment\n#cprogramming\n#crossplatform\n#wasm\n#opensource\n#softwareengineering",
+  "imagePrompt": "A sleek isometric illustration centered on an open C source file (pages displaying “.c” code) feeding into a glossy, metallic build engine (gear‑shaped compiler). From the engine, six distinct, recognizable binary icons emerge in parallel: a Windows‑style four‑pane window, an Apple‑silhouette macOS window, a Linux penguin, an iPhone outline for iOS, an Android robot, and a hexagonal WebAssembly “WASM” chip. They rest on a subtle circuit‑board surface, bathed in cool‑blue directional lighting with soft shadows, using a palette of steel gray, cobalt blue, teal, and amber accents. The style is premium 3D isometric technology illustration.",
+  "draftMessageId": 105
 }

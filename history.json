@@ -23,7 +23,8 @@
     "50467297",
     "50561221",
     "50576291",
-    "50575612"
+    "50575612",
+    "50600516"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -50,6 +51,7 @@
     "Using ExtendDB 1.0 as an open‑source DynamoDB‑compatible layer for cost‑effective dev and CI",
     "Want to build your own home server with just a Android mobile",
     "Love‑driven development (LDD) as a practical safety lens for AI models",
-    "Applying the Bitter Lesson to modern cloud development"
+    "Applying the Bitter Lesson to modern cloud development",
+    "RayClay: open‑source C framework for desktop, mobile, and web"
   ]
 }
