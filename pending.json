@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590276,
-  "topic": "Steve Yegge’s perspective on AI agents reshaping software engineering practices",
-  "category": "software engineering",
-  "source": "discovery",
-  "sourceTitle": "Steve Yegge on AI Agents and the Future of Software Engineering",
-  "sourceUrl": "https://newsletter.pragmaticengineer.com/p/steve-yegge-on-ai-agents-and-the",
-  "sourceObjectId": "50556168",
-  "postText": "AI agents are rewriting the rulebook for software engineering.\n\n- I listened to Steve Yegge’s recent talk and one thing stuck: AI can now draft, refactor, and even design code snippets without human prompts.\nIt can spin up a micro-service skeleton in seconds, something that used to take hours.\n\n- But Yegge warns that relying on AI for the “creative” parts can erode our deep problem-solving muscles, especially when the models hallucinate architectural constraints.\nYegge also notes that this over-reliance can blind teams to hidden performance bottlenecks.\n\n- In practice, I’ve started using an LLM to generate boilerplate, then spend 20-30% of the sprint reviewing its output. The time saved on repetitive tasks is real, yet the review cost balances it out.\nIn my last sprint, the AI-generated scaffolding shaved off 8 hours of manual wiring, freeing time for user-focused testing.\n\n- The real opportunity, according to Yegge, is using agents as “pair programmers” that surface alternatives we’d never think of, forcing us to question our own assumptions.\nThat frictionless ideation has already helped my team discover a caching pattern that cut latency by 30% in a side project.\n\n- However, we must embed guardrails: unit-test coverage, static analysis, and a clear ownership model so the AI never becomes a black box.\nA simple policy-no production merge without passing the full test suite-has kept us from accidental regressions.\n\nHow are you blending AI agents into your development workflow without losing the craft?\n\n#ai\n#softwareengineering\n#devops\n#mlops\n#cloud\n#programming",
-  "imagePrompt": "An isometric, premium‑3D illustration of a modern developer workstation: at the center, a sleek laptop open to an IDE window where lines of real‑looking JavaScript code scroll. A compact, metallic AI robot arm with subtle LED eyes reaches out from the right, handing a freshly printed code sheet (showing a micro‑service skeleton with a Docker‑style container icon and a “main.rs” file) into the left hand of a human developer in a casual hoodie. Behind them, a transparent pipeline arches from the robot to a series of concrete guard‑rail symbols—a bronze shield labeled “unit‑tests,” a magnifying glass over static‑analysis warnings, and a locked gate representing “merge policy.” In the background, realistic server racks glow with soft teal lights. Lighting splits the scene: cool blue highlights the AI side, warm amber washes the human side, creating a balanced contrast. Color palette: steel gray, deep teal, amber, white, and muted green for the shield. Style: isometric 3D illustration with precise, recognizable tech objects and clear visual hierarchy.",
-  "draftMessageId": 114
+  "status": "idle",
+  "telegramOffset": 249590277,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imagePrompt": null,
+  "draftMessageId": null
 }
