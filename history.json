@@ -25,7 +25,8 @@
     "50576291",
     "50575612",
     "50600516",
-    "50603730"
+    "50603730",
+    "50556168"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -54,6 +55,7 @@
     "Love‑driven development (LDD) as a practical safety lens for AI models",
     "Applying the Bitter Lesson to modern cloud development",
     "RayClay: open‑source C framework for desktop, mobile, and web",
-    "AWS outage that flew under the radar and resilience lessons"
+    "AWS outage that flew under the radar and resilience lessons",
+    "Steve Yegge’s perspective on AI agents reshaping software engineering practices"
   ]
 }
