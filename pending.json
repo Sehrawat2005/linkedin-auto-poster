@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590277,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imagePrompt": null,
-  "draftMessageId": null
+  "topic": "Cost pitfalls of serving LLMs with AWS Lambda",
+  "category": "AWS",
+  "source": "discovery",
+  "sourceTitle": "Serving Qwen via AWS Lambdas for fun and 80x negative profit",
+  "sourceUrl": "https://noahbuilt.it/writing/qwen-on-5600-lambdas",
+  "sourceObjectId": "50638070",
+  "postText": "Running an LLM on Lambda? Expect the bill to bite.\n\n- Lambda’s pay-per-invocation model looks perfect for occasional inference, and you can spin it up in minutes without managing servers.\nEven with the free tier, the cumulative duration quickly eclipses the nominal rates.\n\n- The Qwen 6B model needs about 2 GB RAM; each cold start loads the weights, taking ~150 ms and costing roughly $0.0002 per request. At 1 M calls you’re already looking at $200 plus data-transfer fees.\nIn practice the Lambda billing rounds up to the nearest 1 ms, so the cheap per-request estimate is optimistic.\n\n- Reloading the model on every invocation also burns CPU cycles, and VPC, EFS, and CloudWatch logging add extra line-item charges you rarely see on the console.\nThose hidden line items are why a simple cost-per-invocation calculator often underestimates the real spend.\n\n- For steady traffic, a SageMaker endpoint or a spot-instance container keeps the model warm and drops the per-request cost to under $0.00005, while still offering auto-scaling.\nSageMaker also gives you built-in model versioning and A/B testing, which are priceless for production pipelines.\n\n- The key is to match the workload to the right compute layer: serverless for spikes, persistent containers for the long tail.\nChoosing the right tier early saves you from refactoring later when traffic patterns change.\n\nWhat’s your go-to pattern for cheap, low-latency model serving?\n\n#aws\n#cloudcomputing\n#serverless\n#mlops\n#costoptimization\n#lambda",
+  "imagePrompt": "A detailed isometric illustration split into two juxtaposed zones:\n\n**Left zone (the “Lambda trap”)** – a small, cloud‑shaped container with a subtle lightning bolt silhouette sits on a thin pedestal, representing a serverless function. From a stream of tiny request icons (simple arrows) a massive stack of thick, labeled‑like data disks (symbolizing the Qwen 6B model weights) is repeatedly poured into the cloud, each drop triggering a brief spark (cold‑start). Around the cloud hover miniature symbols of hidden services: a network‑cable coil (VPC), a rectangular rack with a disk icon (EFS), and a tiny monitor with a line graph (CloudWatch). Below the scene a rising column of semi‑transparent dollar bills stacks higher with each load, emphasizing escalating cost.\n\n**Right zone (the “SageMaker solution”)** – a sturdy, three‑unit server rack glows with a warm amber light, its interior visibly housing the same stack of data disks already seated securely, indicating a warm, persistent model. A single, smooth arrow of requests flows directly into the rack without additional disks. A modest, single‑coin icon rests on the rack’s base, showing dramatically lower expense.\n\nThe overall lighting is cool‑blue on the left (highlighting inefficiency) and warm‑amber on the right (signaling optimal, cost‑effective serving). The color palette mixes deep navy, steel gray, and electric teal for the Lambda side, contrasted with warm orange, copper, and soft white for the SageMaker side. The style is a clean, premium 3‑D isometric technology illustration with crisp edges, subtle shadows, and a slight depth‑of‑field that draws the eye toward the contrasting cost narratives.",
+  "draftMessageId": 119
 }

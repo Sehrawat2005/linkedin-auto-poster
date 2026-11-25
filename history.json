@@ -26,7 +26,8 @@
     "50575612",
     "50600516",
     "50603730",
-    "50556168"
+    "50556168",
+    "50638070"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -56,6 +57,7 @@
     "Applying the Bitter Lesson to modern cloud development",
     "RayClay: open‑source C framework for desktop, mobile, and web",
     "AWS outage that flew under the radar and resilience lessons",
-    "Steve Yegge’s perspective on AI agents reshaping software engineering practices"
+    "Steve Yegge’s perspective on AI agents reshaping software engineering practices",
+    "Cost pitfalls of serving LLMs with AWS Lambda"
   ]
 }
