@@ -1,13 +1,13 @@
 {
-  "status": "idle",
+  "status": "awaiting_review",
   "telegramOffset": 249590278,
-  "topic": null,
-  "category": null,
-  "source": null,
-  "sourceTitle": null,
-  "sourceUrl": null,
-  "sourceObjectId": null,
-  "postText": null,
-  "imagePrompt": null,
-  "draftMessageId": null
+  "topic": "Testing Terraform locally with an AWS emulator to speed up CI and save money",
+  "category": "AWS",
+  "source": "discovery",
+  "sourceTitle": "Testing Terraform with AWS Emulator",
+  "sourceUrl": "https://notes.hatedabamboo.me/terraform-tests-with-aws-emulator/",
+  "sourceObjectId": "50599309",
+  "postText": "Testing Terraform locally? You can spin an AWS emulator in minutes.\n\n- I tried the new AWS emulator to run Terraform plans without a real account. It boots a tiny EC2-compatible API that understands VPC, S3, and IAM, letting me catch syntax errors early.\n\n- The biggest win is speed: a full plan that used to take 30 seconds on the cloud now finishes in under 5 seconds on my laptop. That translates to faster CI pipelines and cheaper test runs.\n\n- There are limits: the emulator doesn’t simulate every service (e.g., DynamoDB streams) and some resource attributes differ slightly. I keep a small integration test suite that hits the real AWS once a day to catch drift.\n\n- Cost savings are real. My team cut dev-environment AWS spend by roughly $150 per month by swapping nightly sandbox builds for the emulator. It also reduces the blast radius of accidental resource creation.\n\n- The community is already contributing plugins to extend the emulator with RDS, Lambda, and even CloudWatch metrics. I tried a third-party RDS mock and it let me validate DB schema migrations without spinning a real instance.\n\nWhat tricks have you discovered for safe, cheap Terraform testing?\n\n#aws\n#terraform\n#cloudcomputing\n#devops\n#infrastructureascode\n#softwaredevelopment",
+  "imagePrompt": "A sleek isometric illustration centered on an open laptop on a desk; the laptop screen shows a Terraform CLI prompt with “terraform plan” output. Beside the laptop sits a compact, transparent Docker‑style container labeled “AWS Emulator” that houses recognizable mini‑icons of an EC2 instance, an S3 bucket, and an IAM shield, all rendered in their official AWS colors. A small stopwatch with a 5‑second readout hovers over the emulator, while a faded, larger cloud icon in the background is crossed out with a green dollar‑sign arrow pointing toward the emulator, signifying cost savings. Cool‑blue and soft‑gray palette with accents of AWS orange and teal, soft ambient lighting, and a clean, modern editorial illustration style.",
+  "draftMessageId": 124
 }
