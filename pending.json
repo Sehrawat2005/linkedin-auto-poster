@@ -1,13 +1,13 @@
 {
-  "status": "awaiting_review",
-  "telegramOffset": 249590279,
-  "topic": "using Brickie sandboxes to isolate dev work in AWS",
-  "category": "aws",
-  "source": "discovery",
-  "sourceTitle": "Show HN: Brickie – Deploy sandboxes in your own AWS account",
-  "sourceUrl": "https://github.com/hatchet-dev/brickie",
-  "sourceObjectId": "50629936",
-  "postText": "Want to test any code in AWS without risking your production?\n\n- Brickie lets you spin up isolated AWS accounts that act as sandboxes for each developer or experiment. You get a fresh VPC, IAM roles, and billing limits automatically, so nothing leaks into your main environment and you can destroy it with a single click.\n\n- Because each sandbox lives in its own AWS account, the blast radius of misconfigurations or runaway costs is contained. You can enforce service quotas and use AWS Organizations SCPs to prevent privileged actions, and even require MFA for any privileged API call.\n\n- The on-demand model speeds up onboarding: new hires get a ready-to-code environment in minutes, not days of manual setup. Teams can also spin up temporary stacks for hackathons or proof-of-concepts without waiting for approvals, and product groups can test new architectures instantly.\n\n- Cost monitoring becomes trivial. Brickie tags every resource, feeds usage into Cost Explorer, and you can shut down the whole sandbox with a single API call once the experiment ends, avoiding surprise bills, and you can set budget alerts that automatically suspend the account when thresholds are crossed.\n\nWhat sandbox strategy has saved you time or money lately?\n\n#aws\n#cloudcomputing\n#devops\n#softwaredevelopment\n#costoptimization\n#security",
-  "imagePrompt": "A premium‑style 3D illustration in isometric view showing three transparent glass “sandbox” boxes sitting on a sleek metal workbench. Each box contains a miniature, recognisable AWS environment: a small cloud‑shaped volume packed with realistic server‑rack modules, tiny cylindrical VPC nodes linked by thin copper‑colored network lines, a polished steel shield representing IAM roles, and a bright green price‑tag hanging from a resource. Behind the sandboxes, a larger, fully‑filled server rack labeled “Production” looms, its front panel illuminated with a subtle red warning light to suggest risk. Soft overhead lighting casts gentle reflections on the glass, while a cool‑teal ambient glow emanates from inside each sandbox, emphasizing isolation. Color palette blends AWS orange, muted steel gray, teal accents, and green cost‑tag highlights. The composition centers on the sandboxes, visually communicating isolated AWS accounts created by Brickie for safe, on‑demand development.",
-  "draftMessageId": 129
+  "status": "idle",
+  "telegramOffset": 249590280,
+  "topic": null,
+  "category": null,
+  "source": null,
+  "sourceTitle": null,
+  "sourceUrl": null,
+  "sourceObjectId": null,
+  "postText": null,
+  "imagePrompt": null,
+  "draftMessageId": null
 }
