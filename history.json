@@ -29,7 +29,8 @@
     "50556168",
     "50638070",
     "50599309",
-    "50629936"
+    "50629936",
+    "50670173"
   ],
   "usedTopics": [
     "Privacy-focused AI model outperforms big players in PII detection",
@@ -62,6 +63,7 @@
     "Steve Yegge’s perspective on AI agents reshaping software engineering practices",
     "Cost pitfalls of serving LLMs with AWS Lambda",
     "Testing Terraform locally with an AWS emulator to speed up CI and save money",
-    "using Brickie sandboxes to isolate dev work in AWS"
+    "using Brickie sandboxes to isolate dev work in AWS",
+    "Trainium2 slashes ML training costs by 50% vs Nvidia H200"
   ]
 }
